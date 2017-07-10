@@ -39,6 +39,9 @@
     <ClInclude Include="QuickSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ShellSort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
