@@ -86,7 +86,8 @@ void __quicksort3(int arr[], int l, int r)
 {
 	if( l >= r )
 		return;
-	//基准排序前
+	//partition前
+	//(v\l\lt)i...............................(r\gt)
 	//l....<v.....|lt...=v...|i...?v...gt|...>v...r
 	int v = arr[l];
 	int lt = l;      
@@ -97,7 +98,7 @@ void __quicksort3(int arr[], int l, int r)
 		else if(arr[i] > v)	swap(arr[i], arr[gt--]);
 		else i++;
 	}
-	//基准排序后
+	//partition后
 	//l....<v.....|lt...=v....(gt/i)|...>v...r	[lt, gt]范围内都是重复的基准元素,无需对其再进行排序
 	__quicksort3(arr, l, lt - 1);
 	__quicksort3(arr, gt + 1, r);
