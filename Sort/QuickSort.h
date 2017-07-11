@@ -21,16 +21,15 @@ void quickSort3(int arr[], int n);
 //////////////////////////////////////////////////////////
 int __partition(int arr[], int l, int r){
 	int v = arr[l];
-	int i = l;
-	int j = r + 1;
-	while(1)
-	{
-		while(arr[++i] < v)if(i == r) break;
-		while(v < arr[--j])if(j == l) break;
-		if(i >= j) break;
-		swap( arr[i] , arr[j]);
-	}
+	int j = l; // arr[l+1...j] < v ; arr[j+1...i) > v
+	for( int i = l + 1 ; i <= r ; i ++ )
+		if( arr[i] < v ){
+			j ++;
+			swap( arr[j] , arr[i] );
+		}
+
 		swap( arr[l] , arr[j]);
+
 		return j;
 }
 void __quicksort(int arr[], int l, int r)
@@ -86,30 +85,25 @@ void __quicksort3(int arr[], int l, int r)
 {
 	if( l >= r )
 		return;
-
+	//partition初始状态
+	//(v\l\lt)i...............................(r\gt)
+	//partition中
+	//l....<v.....|lt...=v...|i...?v...gt|...>v...r
 	int v = arr[l];
-	int lt = l;     // arr[l+1...lt] < v
-	int gt = r + 1; // arr[gt...r] > v
-	int i = l+1;    // arr[lt+1...i) == v
-	while( i < gt ){
-		if( arr[i] < v ){
-			swap( arr[i], arr[lt+1]);
-			i ++;
-			lt ++;
-		}
-		else if( arr[i] > v ){
-			swap( arr[i], arr[gt-1]);
-			gt --;
-		}
-		else{ // arr[i] == v
-			i ++;
-		}
+	int lt = l;      
+	int gt = r;  
+	int i = l+1;
+	while( i <= gt ){
+		if(arr[i] < v)	swap(arr[i++], arr[lt++]);
+		else if(arr[i] > v)	swap(arr[i], arr[gt--]);
+		else i++;
 	}
-	swap( arr[l] , arr[lt] );
-	//[lt, gt]范围内都是重复的基准元素
+	//partition后
+	//l....<v.....|lt...=v....(gt/i)|...>v...r	[lt, gt]范围内都是重复的基准元素,无需对其再进行排序
 	__quicksort3(arr, l, lt - 1);
 	__quicksort3(arr, gt + 1, r);
 }
+
 void quickSort3(int arr[], int n)
 {
 	__quicksort3(arr, 0, n-1);

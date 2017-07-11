@@ -77,8 +77,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	cout<<"Test for Repeated Random Array, size = "<<n1<<", random range [0,10]"<<endl;
 	arr = SortTestHelper::generateRandomArray(n1,0,10);
-	SortTestHelper::testSort("Merge Sort - OPTIMIZE", quickSort2, arr, n1);
+	SortTestHelper::testSort("Quick Sort - 2 Way", quickSort2, arr, n1);
 	delete[] arr;
+
+	cout<<"Test for Repeated Random Array, size = "<<n1<<", random range [0,10]"<<endl;
+	arr = SortTestHelper::generateRandomArray(n1,0,10);
+	SortTestHelper::testSort("Quick Sort - 3 Way", quickSort3, arr, n1);
+	delete[] arr;
+
+
  	system("pause");
 
 	return 0;
