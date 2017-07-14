@@ -14,3 +14,7 @@ Sort/QuickSort.h
 *.pdb
 *.ilk
 *.sdf
+*.ipch
+*.manifest
+*.res
+*.rc

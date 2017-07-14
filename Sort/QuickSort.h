@@ -85,14 +85,9 @@ void __quicksort3(int arr[], int l, int r)
 {
 	if( l >= r )
 		return;
-<<<<<<< HEAD
 	//partition³õÊ¼×´Ì¬
 	//(v\l\lt)i...............................(r\gt)
 	//partitionÖĞ
-=======
-	//partitionÇ°
-	//(v\l\lt)i...............................(r\gt)
->>>>>>> 5b0e1438e766dfa96182fe5bdec215beb27f6897
 	//l....<v.....|lt...=v...|i...?v...gt|...>v...r
 	int v = arr[l];
 	int lt = l;      
