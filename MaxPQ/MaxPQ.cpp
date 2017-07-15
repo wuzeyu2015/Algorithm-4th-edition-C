@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "HeapSort.h"
+#include "SortTestHelper.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {

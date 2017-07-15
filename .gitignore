@@ -18,3 +18,5 @@ Sort/QuickSort.h
 *.manifest
 *.res
 *.rc
+Sort/Debug/Sort.vcxprojResolveAssemblyReference.cache
+MaxPQ/Debug/MaxPQ.vcxprojResolveAssemblyReference.cache

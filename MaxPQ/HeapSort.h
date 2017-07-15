@@ -15,24 +15,24 @@ using namespace std;
 template<typename Item>
 class MaxHeap{
 
-private:
-	Item *data;
-	int count;
-	int capacity;
-
-	void shiftUp(int k){
-		while( k > 1 && data[k/2] < data[k] ){
-			swap( data[k/2], data[k] );
-			k /= 2;
-		}
-	}
 public:
-
 	MaxHeap(int capacity){
 		data = new Item[capacity+1];
 		count = 0;
 		this->capacity = capacity;
 	}
+	MaxHeap(Item arr[], int n){
+		data = new Item[n+1];
+		capacity = n;
+
+		for( int i = 0 ; i < n ; i ++ )
+			data[i+1] = arr[i];
+		count = n;
+
+		for( int i = count/2 ; i >= 1 ; i -- )
+			shiftDown(i);
+	}
+
 	~MaxHeap(){
 		delete[] data;
 	}
@@ -47,6 +47,38 @@ public:
 		data[count+1] = item;
 		count ++;
 		shiftUp(count);
+	}
+	Item extractMax(){
+		assert( count > 0 );
+		Item ret = data[1];
+		swap( data[1] , data[count] );
+		count --;
+		shiftDown(1);
+		return ret;
+	}
+	Item getMax(){
+		assert( count > 0 );
+		return data[1];
+	}
+private:
+	Item *data;
+	int count;
+	int capacity;
+
+	void shiftUp(int k){
+		while( k > 1 && data[k/2] < data[k] ){
+			swap( data[k/2], data[k] );
+			k /= 2;
+		}
+	}
+	void shiftDown(int k){
+		while( 2*k <= count ){
+			int j = 2*k;
+			if( j+1 <= count && data[j+1] > data[j] ) j ++;
+			if( data[k] >= data[j] ) break;
+			swap( data[k] , data[j] );
+			k = j;
+		}
 	}
 
 public:
@@ -136,5 +168,51 @@ private:
 	}
 };
 
+template<typename T>
+void heapSort1(T arr[], int n){
+
+	MaxHeap<T> maxheap = MaxHeap<T>(n);
+	for( int i = 0 ; i < n ; i ++ )
+		maxheap.insert(arr[i]);
+
+	for( int i = n-1 ; i >= 0 ; i-- )
+		arr[i] = maxheap.extractMax();
+
+}
+template<typename T>
+void heapSort2(T arr[], int n){
+
+	MaxHeap<T> maxheap = MaxHeap<T>(arr, n);
+
+	for( int i = n-1 ; i >= 0 ; i-- )
+		arr[i] = maxheap.extractMax();
+
+}
+
+template<typename T>
+//arr：数组名，n：数组长度，k：shift索引
+void __shiftDown(T arr[], int n, int k)
+{
+	while( 2*k + 1 < n ){
+		int j = 2*k + 1;
+		if( j + 1 < n && arr[j+1] > arr[j] )
+			j ++;//有右子节点存在且右子节点更大，shift比较右子节点
+		if( arr[k] >= arr[j] ) 
+			break;
+		swap( arr[k] , arr[j] );
+		k = j;//以子节点为根节点进行下一轮shift
+	}
+}
+template<typename T>
+void heapSort(T arr[], int n){
+	//1.堆化操作，从最后一个非子节点n-1/2开始shift
+	for( int i = n-1 / 2 ; i >= 0 ; i-- )
+		__shiftDown(arr, n, i);
+	//2.原地排序，堆顶元素与数组末尾交换后对0在[0, i - 1]内进行shift
+	for( int i = n-1 ; i > 0 ; i-- ){
+		swap(arr[0], arr[i]);
+		__shiftDown(arr, i, 0);
+	}
+}
 
 #endif //HEAPSORT_H
