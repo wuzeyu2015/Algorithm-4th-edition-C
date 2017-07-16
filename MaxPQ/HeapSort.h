@@ -16,11 +16,13 @@ template<typename Item>
 class MaxHeap{
 
 public:
+	//构造空数组data
 	MaxHeap(int capacity){
 		data = new Item[capacity+1];
 		count = 0;
 		this->capacity = capacity;
 	}
+	//拿arr数组构造堆化数组data
 	MaxHeap(Item arr[], int n){
 		data = new Item[n+1];
 		capacity = n;
@@ -189,6 +191,7 @@ void heapSort2(T arr[], int n){
 
 }
 
+//////////////////////////////////////////////////////////////
 template<typename T>
 //arr：数组名，n：数组长度，k：shift索引
 void __shiftDown(T arr[], int n, int k)
@@ -214,5 +217,4 @@ void heapSort(T arr[], int n){
 		__shiftDown(arr, i, 0);
 	}
 }
-
 #endif //HEAPSORT_H

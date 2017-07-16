@@ -30,6 +30,9 @@
     <ClInclude Include="..\Sort\SortTestHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IndexHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
