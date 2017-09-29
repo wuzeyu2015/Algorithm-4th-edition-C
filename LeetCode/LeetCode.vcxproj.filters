@@ -24,6 +24,42 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="71_Simplify_Path.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="144_Binary_Tree_Preorder_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="94_Binary_Tree_Inorder_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="145_Binary_Tree_Postorder_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="102_Binary_Tree_Level_Order_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="103_Binary_Tree_Zigzag_Level_Order_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="107_Binary_Tree_Level_Order_Traversal_II.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="150_Evaluate_Reverse_Polish_Notation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="20_Valid_Parentheses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="199_Binary_Tree_Right_Side_View.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="279_Perfect_Squares.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="127_Word_Ladder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

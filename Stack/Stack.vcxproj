@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C07E8D94-0633-4151-99CC-A3E78A526106}</ProjectGuid>
+    <ProjectGuid>{7C2559DE-7CFB-4B59-971A-CAB895943A11}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>LeetCode</RootNamespace>
+    <RootNamespace>Stack</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -45,7 +45,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -75,23 +75,11 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="102_Binary_Tree_Level_Order_Traversal.h" />
-    <ClInclude Include="103_Binary_Tree_Zigzag_Level_Order_Traversal.h" />
-    <ClInclude Include="107_Binary_Tree_Level_Order_Traversal_II.h" />
-    <ClInclude Include="127_Word_Ladder.h" />
-    <ClInclude Include="144_Binary_Tree_Preorder_Traversal.h" />
-    <ClInclude Include="145_Binary_Tree_Postorder_Traversal.h" />
-    <ClInclude Include="150_Evaluate_Reverse_Polish_Notation.h" />
-    <ClInclude Include="199_Binary_Tree_Right_Side_View.h" />
-    <ClInclude Include="20_Valid_Parentheses.h" />
-    <ClInclude Include="279_Perfect_Squares.h" />
-    <ClInclude Include="71_Simplify_Path.h" />
-    <ClInclude Include="94_Binary_Tree_Inorder_Traversal.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LeetCode.cpp" />
+    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
