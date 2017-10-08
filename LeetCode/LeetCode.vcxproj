@@ -79,6 +79,7 @@
     <ClInclude Include="103_Binary_Tree_Zigzag_Level_Order_Traversal.h" />
     <ClInclude Include="107_Binary_Tree_Level_Order_Traversal_II.h" />
     <ClInclude Include="127_Word_Ladder.h" />
+    <ClInclude Include="126_Word_LadderII.h" />
     <ClInclude Include="144_Binary_Tree_Preorder_Traversal.h" />
     <ClInclude Include="145_Binary_Tree_Postorder_Traversal.h" />
     <ClInclude Include="150_Evaluate_Reverse_Polish_Notation.h" />

@@ -4,7 +4,7 @@
 // 1、BFS中queue是必须的数据结构；
 // 2、BFS循环永远是：外部循环（每层） + 内部循环（循环次数是变量），访问队首元素、压入后续元素；
 // 3、注意时间复杂度分析以及15行的优化对复杂度的影响；
-// 4、res为最短距离；
+// 4、res为最短路径；
 
 void NextLevel(string beginWord, set<string>& wordDict, queue<string>& toVisit) {
 	string strtemp = beginWord;
@@ -24,24 +24,25 @@ void NextLevel(string beginWord, set<string>& wordDict, queue<string>& toVisit) 
 	}
 }
 
-int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+vector <vector <string>> ladderLength(string beginWord, string endWord, vector<string>& wordList) {
 	set<string> wordDict(wordList.begin(), wordList.end());
-	int res = 0;
+	vector <vector <string>> res(0, vector <string>());
+	int iLevel = -1;
 	queue<string> toVisit;
 	toVisit.push(beginWord);				//构建第一层
 	while (!toVisit.empty())
 	{
-		res++;
+		iLevel++;
 		int curLevel = toVisit.size();
 		for(int i = 0; i < curLevel; i++){
-			beginWord = toVisit.front();//访问队首元素
+			beginWord = toVisit.front();
 			toVisit.pop();
 			if(beginWord == endWord)
 				return res;
-			NextLevel(beginWord, wordDict, toVisit);//压入后续元素
+			NextLevel(beginWord, wordDict, toVisit);
 		}
 	}
-	return 0;
+	return res;
 }
 
 

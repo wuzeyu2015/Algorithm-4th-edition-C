@@ -19,7 +19,7 @@ vector<vector<int> > levelOrderBottom(TreeNode *root) {
 			vresult.push_back(ilevel);		//本层数据已经全部出队进入ilevel
 			ilevel.clear();
 			if(!iqueue.empty())
-				iqueue.push(NULL);				//下一层数据已经全部进入队列，插入分割标记null
+				iqueue.push(NULL);			//下一层数据已经全部进入队列，插入分割标记null
 		}
 		else{								//继续往ilevel放入下一层的数据
 			ilevel.push_back(node->val);
@@ -29,7 +29,7 @@ vector<vector<int> > levelOrderBottom(TreeNode *root) {
 				iqueue.push(node->right);
 		}
 	}
-	reverse(vresult.begin(), vresult.end());
+	reverse(vresult.begin(), vresult.end());//反转顺序
 	return vresult;
 }
 

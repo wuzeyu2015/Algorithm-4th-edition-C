@@ -60,6 +60,9 @@
     <ClInclude Include="127_Word_Ladder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="126_Word_LadderII.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

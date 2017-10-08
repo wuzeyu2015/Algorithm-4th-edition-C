@@ -15,8 +15,8 @@ vector<vector<int> > levelOrder(TreeNode *root) {
 	while(!iqueue.empty()){
 		TreeNode* node = iqueue.front();
 		iqueue.pop();
-		if(node == NULL){
-			vresult.push_back(ilevel);		//本层数据已经全部出队进入ilevel
+		if(node == NULL){						//本层数据已经全部出队进入ilevel
+			vresult.push_back(ilevel);		
 			ilevel.clear();
 			if(!iqueue.empty())
 				iqueue.push(NULL);				//下一层数据已经全部进入队列，插入分割标记null
