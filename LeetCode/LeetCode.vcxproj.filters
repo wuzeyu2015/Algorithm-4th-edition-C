@@ -63,6 +63,33 @@
     <ClInclude Include="126_Word_LadderII.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="347_Top_K_Frequent_Elements.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="23_Merge_k_Sorted_Lists.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="104_Maximum_Depth_of_Binary_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="111_Minimum_Depth_of_Binary_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="226_Invert_Binary_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="100_Same_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="222_Count_Complete_Tree_Nodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="110_Balanced_Binary_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="112_Path_Sum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -33,6 +33,9 @@
     <ClInclude Include="IndexHeap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MaxPQ.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
