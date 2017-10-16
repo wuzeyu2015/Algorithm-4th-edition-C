@@ -85,6 +85,7 @@
     <ClInclude Include="110_Balanced_Binary_Tree.h" />
     <ClInclude Include="111_Minimum_Depth_of_Binary_Tree.h" />
     <ClInclude Include="112_Path_Sum.h" />
+    <ClInclude Include="125_Valid_Palindrome.h" />
     <ClInclude Include="127_Word_Ladder.h" />
     <ClInclude Include="126_Word_LadderII.h" />
     <ClInclude Include="144_Binary_Tree_Preorder_Traversal.h" />

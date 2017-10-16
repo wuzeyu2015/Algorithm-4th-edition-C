@@ -35,6 +35,9 @@
 //终止条件应用（递归）
 #include "112_Path_Sum.h"
 
+
+//其他
+#include "125_Valid_Palindrome.h"
 int _tmain(int argc, _TCHAR* argv[])
 {
 	test_20();
@@ -59,6 +62,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	test_100();
 	test_222();
 	test_110();
+
+	test_125();
 	return 0;
 }
 
