@@ -98,6 +98,7 @@
     <ClInclude Include="23_Merge_k_Sorted_Lists.h" />
     <ClInclude Include="279_Perfect_Squares.h" />
     <ClInclude Include="347_Top_K_Frequent_Elements.h" />
+    <ClInclude Include="43_Multiply_Strings.h" />
     <ClInclude Include="71_Simplify_Path.h" />
     <ClInclude Include="94_Binary_Tree_Inorder_Traversal.h" />
     <ClInclude Include="stdafx.h" />

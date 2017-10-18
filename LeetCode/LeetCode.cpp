@@ -35,9 +35,21 @@
 //终止条件应用（递归）
 #include "112_Path_Sum.h"
 
-
 //其他
-#include "125_Valid_Palindrome.h"
+#include "125_Valid_Palindrome.h"//递归判断回文
+#include "43_Multiply_Strings.h"//大数相乘
+class Ctest {
+
+public:
+	Ctest& operator + (Ctest& cc) {
+		int i = cc.a;
+		return *this;
+	}
+private:
+	int a;
+
+};
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	test_20();
@@ -64,6 +76,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	test_110();
 
 	test_125();
+	test_043();
+
+
 	return 0;
 }
 
