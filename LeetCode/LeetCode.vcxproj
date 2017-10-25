@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="100_Same_Tree.h" />
+    <ClInclude Include="101_Symmetric_Tree.h" />
     <ClInclude Include="102_Binary_Tree_Level_Order_Traversal.h" />
     <ClInclude Include="103_Binary_Tree_Zigzag_Level_Order_Traversal.h" />
     <ClInclude Include="104_Maximum_Depth_of_Binary_Tree.h" />

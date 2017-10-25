@@ -29,6 +29,7 @@
 #include "111_Minimum_Depth_of_Binary_Tree.h"
 #include "226_Invert_Binary_Tree.h"
 #include "100_Same_Tree.h"
+#include "101_Symmetric_Tree.h"
 #include "222_Count_Complete_Tree_Nodes.h"
 #include "110_Balanced_Binary_Tree.h"
 
@@ -74,6 +75,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	test_100();
 	test_222();
 	test_110();
+	test_101();
+	test_112();
 
 	test_125();
 	test_043();

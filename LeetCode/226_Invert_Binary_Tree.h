@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#pragma once
 
 
 TreeNode* invertTree(TreeNode* root) {

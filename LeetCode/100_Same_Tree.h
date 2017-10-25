@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#pragma once
 
 
 bool isSameTree(TreeNode* p, TreeNode* q) {
