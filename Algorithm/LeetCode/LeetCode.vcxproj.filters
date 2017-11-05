@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="71_Simplify_Path.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="144_Binary_Tree_Preorder_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="94_Binary_Tree_Inorder_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="145_Binary_Tree_Postorder_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="102_Binary_Tree_Level_Order_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="103_Binary_Tree_Zigzag_Level_Order_Traversal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="107_Binary_Tree_Level_Order_Traversal_II.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="150_Evaluate_Reverse_Polish_Notation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="20_Valid_Parentheses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="199_Binary_Tree_Right_Side_View.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="279_Perfect_Squares.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="127_Word_Ladder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="126_Word_LadderII.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="347_Top_K_Frequent_Elements.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="23_Merge_k_Sorted_Lists.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="104_Maximum_Depth_of_Binary_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="111_Minimum_Depth_of_Binary_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="226_Invert_Binary_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="100_Same_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="222_Count_Complete_Tree_Nodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="110_Balanced_Binary_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="112_Path_Sum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="125_Valid_Palindrome.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="43_Multiply_Strings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="101_Symmetric_Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LeetCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
