@@ -12,6 +12,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	/*
 	int n1 = 30000;
 	int n2 = 10000;
 
@@ -37,7 +38,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	SortTestHelper::testSort("Merge Sort - BTU",MergeSortBTU, arr, n1);
 	delete[] arr;
 	arr = SortTestHelper::generateRandomArray(n1,0,n1);
-	SortTestHelper::testSort("Quick Sort", quickSort, arr, n1);
+	SortTestHelper::testSort("Quick Sort", quickSort1, arr, n1);
 	delete[] arr;
 	arr = SortTestHelper::generateRandomArray(n1,0,n1);
 	SortTestHelper::testSort("Heap Sort", heapSort1, arr, n1);
@@ -57,7 +58,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	SortTestHelper::testSort("Merge Sort",MergeSort, arr, n1);
 	delete[] arr;
 	arr = SortTestHelper::generateNearlyOrderedArray(n1,100);
-	SortTestHelper::testSort("Quick Sort", quickSort, arr, n1);
+	SortTestHelper::testSort("Quick Sort", quickSort1, arr, n1);
 	delete[] arr;
 	arr = SortTestHelper::generateNearlyOrderedArray(n1,100);
 	SortTestHelper::testSort("Heap Sort", heapSort1, arr, n1);
@@ -75,7 +76,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	SortTestHelper::testSort("Merge Sort", MergeSort, arr, n1);
 	delete[] arr;
 	arr = SortTestHelper::generateRandomArray(n1,0,10);
-	SortTestHelper::testSort("Quick Sort", quickSort, arr, n1);
+	SortTestHelper::testSort("Quick Sort", quickSort1, arr, n1);
 	delete[] arr;
 	arr = SortTestHelper::generateRandomArray(n1,0,10);
 	SortTestHelper::testSort("Quick Sort - 2 Way", quickSort2, arr, n1);
@@ -91,8 +92,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	delete[] arr;
 	arr = SortTestHelper::generateRandomArray(n1,0,10);
 	SortTestHelper::testSort("Heap Sort 3", heapSort, arr, n1);
-	delete[] arr;
-
+	delete[] arr;*/
+	testQuickSort();
  	system("pause");
 
 	return 0;
