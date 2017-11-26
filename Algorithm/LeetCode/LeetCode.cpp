@@ -39,17 +39,7 @@
 //其他
 #include "125_Valid_Palindrome.h"//递归判断回文
 #include "43_Multiply_Strings.h"//大数相乘
-class Ctest {
 
-public:
-	Ctest& operator + (Ctest& cc) {
-		int i = cc.a;
-		return *this;
-	}
-private:
-	int a;
-
-};
 
 int _tmain(int argc, _TCHAR* argv[])
 {
