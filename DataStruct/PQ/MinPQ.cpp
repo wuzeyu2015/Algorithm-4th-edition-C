@@ -47,13 +47,26 @@ vector<int> MinPQ<T>::heapSort() {
 
 template<typename T>
 void MinPQ<T>::swim(int k) {
- 
+	while (k > 1) {
+		if (pq[k] > pq[k / 2]) {
+			swap(pq[k], pq[k / 2]);
+			k = k / 2;
+		}
+		else
+			break;
 	}
 }
 
 template<typename T>
 void MinPQ<T>::sink(int k) {
- 
+	while (2k <= N) {
+		if (pq[k] < pq[2k]) {
+			swap(pq[k], pq[2k]);
+			k = 2k;
+		}
+		else
+			break;
+	}
 }
 
 template<typename T>
