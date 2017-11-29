@@ -3,12 +3,10 @@
 
 #include "stdafx.h"
 
-void QuickSort(){
-
-}
 
 int main()
 {
+
     return 0;
 }
 

@@ -19,14 +19,14 @@ class MinPQ
 public:
 public:
 	MinPQ();							//默认构造空队列
-	MinPQ(int n);						//用n构造
-	MinPQ(T a[], int n);				//用数组构造
+	MinPQ(int max);						//初始容量为max
+	MinPQ(T a[], int n);				//用a[]数组创建
 
 	void insert(T v);					//末尾插入 
-	T	 delMax();						//头部删除 
+	T	 delMin();						//头部删除 
+	T	 min();							//返回最小元素
 	bool isEmpty();						//判空
-	int  size();						//队列大小
-	T	 min();							//访问最小元素
+	int  size();						//返回队列元素个数
 
 
 private:
@@ -35,7 +35,7 @@ private:
 	void printTest();					//打印堆数据
 
 	T* pq;								//内置数组
-	int N;								//当前数据量
+	int N;								//当前数据量\当前队尾索引
 	int C;								//数据容量
 
 public:

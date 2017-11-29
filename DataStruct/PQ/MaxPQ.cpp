@@ -33,7 +33,7 @@ template<typename T>
 T MaxPQ<T>::delMax() {
 	T ret = pq[1];
 	swap(pq[1], pq[N]);
-	pq[N--] = 0;
+	pq[N--] = NULL;
 	sink(1);
 	return ret;
 }

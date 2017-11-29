@@ -3,41 +3,48 @@
 #include "MinPQ.h"
 template<typename T>
 MinPQ<T>::MinPQ() {
-
+	//
+	//
 }
 
 template<typename T>
 MinPQ<T>::MinPQ(int max) :N(0), C(max) {
-
+	pq = new T[max + 1];//索引要从1开始
 }
 
 template<typename T>
 MinPQ<T>::MinPQ(T a[], int n) : N(n), C(n) {
- 
+	//
+	//
 }
 
 template<typename T>
 void MinPQ<T>::insert(T v) {
- 
+	pq[++N] = v;
+	swim(N);
 }
 
 template<typename T>
-T MinPQ<T>::delMax() {
- 
+T MinPQ<T>::delMin() {
+	T ret = min();
+	pq[1] = pq[N];
+	pq[N--] = NULL;
+	sink(1);
+	return ret;
 }
 template<typename T>
 bool MinPQ<T>::isEmpty() {
- 
+	return N == 0;
 }
 
 template<typename T>
 int MinPQ<T>::size() {
- 
+	return N;
 }
 
 template<typename T>
-T MinPQ<T>::max() {
- 
+T MinPQ<T>::min() {
+	return pq[1];
 }
 
 template<typename T>

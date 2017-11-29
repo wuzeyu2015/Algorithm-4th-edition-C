@@ -20,5 +20,6 @@ Sort/QuickSort.h
 *.rc
 *.db
 *.opendb
+*.VC.db
 Sort/Debug/Sort.vcxprojResolveAssemblyReference.cache
 MaxPQ/Debug/MaxPQ.vcxprojResolveAssemblyReference.cache
