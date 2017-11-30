@@ -3,25 +3,22 @@
 
 #include "stdafx.h"
 #include "MaxPQ.h"
+#include "MinPQ.h"
 
 int main()
 {
-	int a[10] = { 1,2,3,4,5,6,7,8,9,11 };
-	MaxPQ<int> maxPQ(a, 10);
-	vector<int> res = maxPQ.heapSort();
-	for (auto it = res.begin(); it != res.end(); it++) {
-		cout << *it << " ";
-	}
-	cout << endl;
+	MinPQ<int>* pObj = new MinPQ<int>(20);
+	srand(time(NULL));
+	for (int i = 0; i < 20; i++)
+		pObj->insert(rand() % 200);
 
-	int b[11] = { 0,10,9,8,7,6,5,4,3,2,1 };
-	MaxPQ<int>::heapSort(b, 10);
-	for (auto i = 1; i < 11; i++) {
-		cout << b[i] << " ";
+	vector<int> arr;
+	for (int i = 0; i < 20; i++) {
+		arr.push_back(pObj->delMin());
 	}
-	///////////////////
-	MaxPQ<int>::HeapOpt();
-	MaxPQ<int>::pq_Container();
+	for (auto n : arr) {
+		cout << n << " ";
+	}
 	system("pause");
 	return 0;
 }

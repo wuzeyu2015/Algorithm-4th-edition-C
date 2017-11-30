@@ -48,39 +48,38 @@ T MinPQ<T>::min() {
 }
 
 template<typename T>
-vector<int> MinPQ<T>::heapSort() {
- 
-}
-
-template<typename T>
 void MinPQ<T>::swim(int k) {
-	while (k > 1) {
-		if (pq[k] > pq[k / 2]) {
-			swap(pq[k], pq[k / 2]);
-			k = k / 2;
-		}
-		else
-			break;
+	while ((k > 1) && (pq[k] < pq[k / 2])) {
+		swap(pq[k], pq[k / 2]);
+		k = k / 2;
 	}
+	minPQCheck();
 }
 
 template<typename T>
 void MinPQ<T>::sink(int k) {
-	while (2k <= N) {
-		if (pq[k] < pq[2k]) {
-			swap(pq[k], pq[2k]);
-			k = 2k;
+	while (2 * k <= N) {
+		if ((2 * k + 1 <= N) && (pq[2 * k + 1] < pq[2 * k])) {
+			if (pq[k] > pq[2 * k + 1]) {
+				swap(pq[k], pq[2 * k + 1]);
+				k = 2 * k + 1;
+			}
 		}
-		else
-			break;
+		else if (pq[k] > pq[2 * k]) {
+			swap(pq[k], pq[2 * k]);
+			k = 2 * k;
+		}
+	}
+	minPQCheck();
+}
+template<typename T>
+void MinPQ<T>::minPQCheck(void) {
+	for (int i = 1; i <= N / 2; i++) {
+		if ((2 * i + 1 <= N) && (pq[i] > pq[2 * i] || pq[i] > pq[2 * i + 1])) {
+			assert(false);
+		}
 	}
 }
-
-template<typename T>
-void MinPQ<T>::printTest() {
- 
-}
-
 //////////////////////////////////////////////////////////
 //独立的堆排序接口,注意a[]从索引1开始
 template<typename T>
@@ -100,25 +99,5 @@ int MinPQ<T>::HeapOpt() {
 	return 0;
 }
 
-class mycomparison
-{
-	bool reverse;
-public:
-	mycomparison(const bool& revparam = false)
-	{
-		reverse = revparam;
-	}
-	bool operator() (const int& lhs, const int&rhs) const
-	{
-		if (reverse) return (lhs>rhs);
-		else return (lhs<rhs);
-	}
-};
-
-template<typename T>
-int MinPQ<T>::pq_Container()
-{
- 
-}
 
 template class MinPQ<int>;
