@@ -1,89 +1,43 @@
 #ifndef MERGE_H
 #define MERGE_H
-#include "InsetionSort.h"
 
+class MergeSort{
 
-int __merge(int arr[], int l, int l_middle, int r);
-
-void __mergeSort(int arr[], int l, int r);
-
-void MergeSort(int arr[], int n);
-
-//////////////////////////////////////////////////////////
-
-int __merge(int arr[], int l, int l_middle, int r)
-{
-	//1.创建辅助空间
-	int* aux = new int[r - l + 1];
-	for(int i = 0; i <= r - l; i++)
-	{
-		aux[i] = arr[l + i];
+public:
+	MergeSort(int a[], int length){
+		aux = new int[length];
+		memset(aux, 0, length);
+		sort(a, 0, length - 1);
+		memcpy(a, aux, length * sizeof(int));
 	}
-	//2.设置索引:i、j分别是aux[]的左边第一个、右边第一个;
-	//k遍历arr开始这次的归并,注意[i, j]和[l, r]的相对位置关系
-	int i = 0;
-	int j = l_middle - l + 1;
-	for(int k = l; k <= r; k++)
-	{
-		//3.注意归并过程中越界情况的处理
-		if(i > l_middle - l)
-		{
-			arr[k] = aux[j];
-			j++;
-		}
-		else if(j > r - l)
-		{
-			arr[k] = aux[i];
-			i++;
-		}
-		//4.归并过程中正常情况的处理
-		else if(aux[i] > aux[j])
-		{
-			arr[k] = aux[j];
-			j++;
-		}
-		else
-		{
-			arr[k] = aux[i];
-			i++;
-		}
+	~MergeSort(){
+		delete aux;
 	}
-	return 0;
+
+private:
+	int* aux;
+	void merge(int a[], int lo, int mid, int hi);
+	void sort(int a[], int lo, int hi);
+};
+
+void MergeSort::merge(int a[], int lo, int mid, int hi){
+	int i = lo;
+	int j = mid + 1;
+	int k = lo;
+	while(k <= hi){
+		if (a[i] < a[j]) { aux[k++] = a[i++]; }
+		else if (a[i] >= a[j]) { aux[k++] = a[j++]; }
+		else if (i > mid) { aux[k++] = a[j++]; }
+		else if (j > hi) { aux[k++] = a[i++]; }
+	}
 }
-
-void __mergeSort(int arr[], int l, int r)
-{
-	//1.到达递归临界条件（分割数组不用再进行排序）
-	if( l >= r )
+void MergeSort::sort(int a[], int lo, int hi){
+	if (lo >= hi)
 		return;
-// 	if( r - l < 15 )
-// 	{
-// 		__portionInsertionSort(arr, l, r);
-// 		return;
-// 	}
-	int l_middle = (l + r) / 2;
-	__mergeSort(arr, l, l_middle);
-	__mergeSort(arr, l_middle + 1, r);
-
-//	if(arr[l_middle] > arr[l_middle + 1])
-	__merge(arr, l, l_middle, r);
-}
-
-void MergeSort(int arr[], int n)
-{
-	__mergeSort(arr, 0, n-1);
-}
-
-void MergeSortBTU(int arr[], int n)//用for循环，自底向上的迭代
-{
-	for(int sz = 1; sz <=n; sz += sz)
-	{
-		for(int i = 0; i < n - sz + 1; i += 2*sz)
-		{
-			//将[i, i + sz - 1]、 [i + sz, i + 2sz - 1]进行归并
-			__merge(arr, i, i + sz - 1, min((i + 2*sz -1), n - 1));
-		}
-	}
+	int mid = (lo + hi) / 2;
+	sort(a, lo, mid);
+	sort(a, mid + 1, hi);
+	merge(a, lo, mid, hi);
 }
 
 

@@ -32,11 +32,14 @@ public:
 private:
 	void swim(int k);					//尾部新数据重排
 	void sink(int k);					//头部新数据重排
-	void printTest();					//打印堆数据
+
 
 	T* pq;								//内置数组
 	int N;								//当前数据量\当前队尾索引
 	int C;								//数据容量
+
+private:
+	void printTest();					//打印堆数据
 
 public:
 	static void sink(int a[], int k, int n);

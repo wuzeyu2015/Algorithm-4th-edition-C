@@ -75,6 +75,8 @@ void MinPQ<T>::sink(int k) {
 			break;
 	}
 }
+//////////////////////////////////////////////////////////
+
 
 template<typename T>
 void MinPQ<T>::printTest() {
