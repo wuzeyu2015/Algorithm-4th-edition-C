@@ -43,6 +43,7 @@ public:
 	static void sink(int a[], int k, int n);
 	static void heapSort(int a[], int n);
 	static int MinPQ<T>::HeapOpt();
+	static int MinPQ<T>::testMinPQ();
 };
 
 #endif //MINPQ_H

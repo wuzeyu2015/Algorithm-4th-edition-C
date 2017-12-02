@@ -22,6 +22,7 @@ template<typename T>
 void MinPQ<T>::insert(T v) {
 	pq[++N] = v;
 	swim(N);
+	minPQCheck();
 }
 
 template<typename T>
@@ -30,6 +31,7 @@ T MinPQ<T>::delMin() {
 	pq[1] = pq[N];
 	pq[N--] = NULL;
 	sink(1);
+	minPQCheck();
 	return ret;
 }
 template<typename T>
@@ -53,7 +55,6 @@ void MinPQ<T>::swim(int k) {
 		swap(pq[k], pq[k / 2]);
 		k = k / 2;
 	}
-	minPQCheck();
 }
 
 template<typename T>
@@ -64,13 +65,16 @@ void MinPQ<T>::sink(int k) {
 				swap(pq[k], pq[2 * k + 1]);
 				k = 2 * k + 1;
 			}
+			else
+				break;
 		}
 		else if (pq[k] > pq[2 * k]) {
 			swap(pq[k], pq[2 * k]);
 			k = 2 * k;
 		}
+		else
+			break;
 	}
-	minPQCheck();
 }
 template<typename T>
 void MinPQ<T>::minPQCheck(void) {
@@ -98,6 +102,20 @@ int MinPQ<T>::HeapOpt() {
 
 	return 0;
 }
+template<typename T>
+int MinPQ<T>::testMinPQ() {
+	MinPQ<int>* pObj = new MinPQ<int>(2000);
+	srand(time(NULL));
+	for (int i = 0; i < 2000; i++)
+		pObj->insert(rand() % 2000);
 
-
+	vector<int> arr;
+	for (int i = 0; i < 2000; i++) {
+		arr.push_back(pObj->delMin());
+	}
+	for (auto n : arr) {
+		cout << n << " ";
+	}
+	return 0;
+}
 template class MinPQ<int>;

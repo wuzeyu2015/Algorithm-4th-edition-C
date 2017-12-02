@@ -7,18 +7,9 @@
 
 int main()
 {
-	MinPQ<int>* pObj = new MinPQ<int>(20);
-	srand(time(NULL));
-	for (int i = 0; i < 20; i++)
-		pObj->insert(rand() % 200);
-
-	vector<int> arr;
-	for (int i = 0; i < 20; i++) {
-		arr.push_back(pObj->delMin());
-	}
-	for (auto n : arr) {
-		cout << n << " ";
-	}
+	//MinPQ<int>::testMinPQ();
+	cout << "================================" << endl;
+	MaxPQ<int>::testMaxPQ();
 	system("pause");
 	return 0;
 }
