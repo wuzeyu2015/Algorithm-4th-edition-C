@@ -48,6 +48,7 @@ public:
 	 static void heapSort(int a[], int n);
 	 static int MaxPQ<T>::pq_Container();
 	 static int MaxPQ<T>::HeapOpt();
+	 static int MaxPQ<T>::testMaxPQ();
 };
 
 #endif //MAXPQ_H

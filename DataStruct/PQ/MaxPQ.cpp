@@ -185,4 +185,21 @@ int MaxPQ<T>::pq_Container()
 	return 0;
 }
 
+template<typename T>
+int MaxPQ<T>::testMaxPQ() {
+	MaxPQ<int>* pObj = new MaxPQ<int>(2000);
+	srand(time(NULL));
+	for (int i = 0; i < 2000; i++)
+		pObj->insert(rand() % 2000);
+
+	vector<int> arr;
+	for (int i = 0; i < 2000; i++) {
+		arr.push_back(pObj->delMax());
+	}
+	for (auto n : arr) {
+		cout << n << " ";
+	}
+	return 0;
+}
+
 template class MaxPQ<int>;
