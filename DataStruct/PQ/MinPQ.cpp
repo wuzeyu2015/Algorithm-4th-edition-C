@@ -75,6 +75,7 @@ void MinPQ<T>::sink(int k) {
 			break;
 	}
 }
+//////////////////////////////////////////////////////////
 template<typename T>
 void MinPQ<T>::minPQCheck(void) {
 	for (int i = 1; i <= N / 2; i++) {
