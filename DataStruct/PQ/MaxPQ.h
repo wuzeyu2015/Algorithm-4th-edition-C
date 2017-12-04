@@ -38,6 +38,7 @@ public:
 private:
 	void swim(int k);					//尾部新数据重排
 	void sink(int k);					//头部新数据重排
+	void maxPQCheck();					//检查队列是否满足最小堆
 	void printTest();					//打印堆数据
 	 T* pq;								// heap-ordered complete binary tree
 	 int N;								// in pq[1..N] with pq[0] unused 当前容量

@@ -10,6 +10,7 @@ MinPQ<T>::MinPQ() {
 template<typename T>
 MinPQ<T>::MinPQ(int max) :N(0), C(max) {
 	pq = new T[max + 1];//索引要从1开始
+	memset(pq, 0, sizeof(int) *(max + 1));
 }
 
 template<typename T>
@@ -60,17 +61,15 @@ void MinPQ<T>::swim(int k) {
 template<typename T>
 void MinPQ<T>::sink(int k) {
 	while (2 * k <= N) {
-		if ((2 * k + 1 <= N) && (pq[2 * k + 1] < pq[2 * k])) {
+		int s = 2 * k;//s is the final child element in swap
+		if ((2 * k < N) && (pq[2 * k + 1] < pq[2 * k])) {
 			if (pq[k] > pq[2 * k + 1]) {
-				swap(pq[k], pq[2 * k + 1]);
-				k = 2 * k + 1;
+				s++;
 			}
-			else
-				break;
 		}
-		else if (pq[k] > pq[2 * k]) {
-			swap(pq[k], pq[2 * k]);
-			k = 2 * k;
+		if (pq[k] > pq[s]) {
+			swap(pq[k], pq[s]);
+			k = s;
 		}
 		else
 			break;
@@ -84,29 +83,12 @@ void MinPQ<T>::minPQCheck(void) {
 		}
 	}
 }
-//////////////////////////////////////////////////////////
-//独立的堆排序接口,注意a[]从索引1开始
-template<typename T>
-void MinPQ<T>::sink(int a[], int k, int n) {			//头部新数据重排
- 
-}
 
-template<typename T>
-void MinPQ<T>::heapSort(int a[], int n) {
- 
-}
-
-template<typename T>
-int MinPQ<T>::HeapOpt() {
- 
-
-	return 0;
-}
 template<typename T>
 int MinPQ<T>::testMinPQ() {
-	MinPQ<int>* pObj = new MinPQ<int>(2000);
+	MinPQ<int>* pObj = new MinPQ<int>(2);
 	srand(time(NULL));
-	for (int i = 0; i < 2000; i++)
+	for (int i = 0; i < 3; i++)
 		pObj->insert(rand() % 2000);
 
 	vector<int> arr;

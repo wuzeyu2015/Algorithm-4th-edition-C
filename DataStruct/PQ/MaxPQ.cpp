@@ -27,6 +27,7 @@ template<typename T>
 void MaxPQ<T>::insert(T v) {
 	pq[++N] = v;
 	swim(N);
+	maxPQCheck();
 }
 
 template<typename T>
@@ -35,6 +36,7 @@ T MaxPQ<T>::delMax() {
 	swap(pq[1], pq[N]);
 	pq[N--] = NULL;
 	sink(1);
+	maxPQCheck();
 	return ret;
 }
 template<typename T>
@@ -72,13 +74,15 @@ void MaxPQ<T>::swim(int k) {
 template<typename T>
 void MaxPQ<T>::sink(int k) {
 	while (2 * k <= N) {
+		int s = 2 * k;//s is the final child element in swap
 		if ((2 * k < N) && (pq[2 * k] < pq[2 * k + 1])) {
-			swap(pq[k], pq[2 * k + 1]);
-			k = 2 * k + 1;
+			if (pq[k] < pq[2 * k + 1]) {
+				s++;
+			}
 		}
-		else if (pq[k] < pq[2 * k]) {
-			swap(pq[k], pq[2 * k]);
-			k *= 2;
+		if (pq[k] < pq[s]) {
+			swap(pq[k], pq[s]);
+			k = s;
 		}
 		else
 			break;
@@ -183,6 +187,15 @@ int MaxPQ<T>::pq_Container()
 	mypq_type fifth(myints, myints + 4, mycomparison(true));   // greater-than comparison
 
 	return 0;
+}
+
+template<typename T>
+void MaxPQ<T>::maxPQCheck(void) {
+	for (int i = 1; i <= N / 2; i++) {
+		if ((2 * i + 1 <= N) && (pq[i] < pq[2 * i] || pq[i] < pq[2 * i + 1])) {
+			assert(false);
+		}
+	}
 }
 
 template<typename T>
