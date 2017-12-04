@@ -102,18 +102,19 @@ void MaxPQ<T>::printTest() {
 	}
 }
 
-//////////////////////////////////////////////////////////
-//独立的堆排序接口,注意a[]从索引1开始
+///////////////堆排序////////////////////////
 template<typename T>
 void MaxPQ<T>::sink(int a[], int k, int n) {			//头部新数据重排
-	while (2 * k <= n) {						//保证有子节点
+	while (2 * k <= n) {
+		int s = 2 * k;//s is the final child element in swap
 		if ((2 * k < n) && (a[2 * k] < a[2 * k + 1])) {
-			swap(a[k], a[2 * k + 1]);
-			k = 2 * k + 1;
+			if (a[k] < a[2 * k + 1]) {
+				s++;
+			}
 		}
-		else if (a[k] < a[2 * k]) {
-			swap(a[k], a[2 * k]);
-			k *= 2;
+		if (a[k] < a[s]) {
+			swap(a[k], a[s]);
+			k = s;
 		}
 		else
 			break;
@@ -198,21 +199,6 @@ void MaxPQ<T>::maxPQCheck(void) {
 	}
 }
 
-template<typename T>
-int MaxPQ<T>::testMaxPQ() {
-	MaxPQ<int>* pObj = new MaxPQ<int>(2000);
-	srand(time(NULL));
-	for (int i = 0; i < 2000; i++)
-		pObj->insert(rand() % 2000);
 
-	vector<int> arr;
-	for (int i = 0; i < 2000; i++) {
-		arr.push_back(pObj->delMax());
-	}
-	for (auto n : arr) {
-		cout << n << " ";
-	}
-	return 0;
-}
 
 template class MaxPQ<int>;

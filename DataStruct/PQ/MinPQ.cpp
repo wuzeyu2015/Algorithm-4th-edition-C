@@ -75,7 +75,37 @@ void MinPQ<T>::sink(int k) {
 			break;
 	}
 }
-//////////////////////////////////////////////////////////
+
+/////////////////堆排序/////////////////////
+template<typename T>
+void MinPQ<T>::sink(int a[], int k, int n) {			//头部新数据重排
+	while (2 * k <= n) {
+		int s = 2 * k;//s is the final child element in swap
+		if ((2 * k < n) && (a[2 * k] > a[2 * k + 1])) {
+			if (a[k] > a[2 * k + 1]) {
+				s++;
+			}
+		}
+		if (a[k] > a[s]) {
+			swap(a[k], a[s]);
+			k = s;
+		}
+		else
+			break;
+	}
+}
+/////////////////堆排序/////////////////////
+template<typename T>
+void MinPQ<T>::heapSort(int a[], int n) {
+	//在a[]中使用下沉方式构建堆(从最小树开始往上直到顶点)
+	for (int k = n / 2; k >= 1; k--) {
+		sink(a, k, n);
+	}
+	while (n > 1) {
+		swap(a[1], a[n--]);//和delMax对比，这里没有屏蔽尾部元素，只进行排序
+		sink(a, 1, n);
+	}
+}
 template<typename T>
 void MinPQ<T>::minPQCheck(void) {
 	for (int i = 1; i <= N / 2; i++) {
@@ -85,20 +115,5 @@ void MinPQ<T>::minPQCheck(void) {
 	}
 }
 
-template<typename T>
-int MinPQ<T>::testMinPQ() {
-	MinPQ<int>* pObj = new MinPQ<int>(2);
-	srand(time(NULL));
-	for (int i = 0; i < 3; i++)
-		pObj->insert(rand() % 2000);
 
-	vector<int> arr;
-	for (int i = 0; i < 2000; i++) {
-		arr.push_back(pObj->delMin());
-	}
-	for (auto n : arr) {
-		cout << n << " ";
-	}
-	return 0;
-}
 template class MinPQ<int>;

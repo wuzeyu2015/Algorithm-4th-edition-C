@@ -7,9 +7,6 @@
 
 int main()
 {
-	MinPQ<int>::testMinPQ();
-// 	cout << "================================" << endl;
-// 	MaxPQ<int>::testMaxPQ();
 	system("pause");
 	return 0;
 }

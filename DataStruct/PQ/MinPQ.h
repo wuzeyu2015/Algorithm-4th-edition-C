@@ -40,11 +40,9 @@ private:
 	int N;								//当前数据量\当前队尾索引
 	int C;								//数据容量
 
-private:
-	void printTest();					//打印堆数据
-
 public:
-	static int MinPQ<T>::testMinPQ();
+	static void sink(int a[], int k, int n);
+	static void heapSort(int a[], int n);
 };
 
 #endif //MINPQ_H
