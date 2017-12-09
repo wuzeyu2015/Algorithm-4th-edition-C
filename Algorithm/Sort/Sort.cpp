@@ -11,7 +11,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	testQuickSort();
+	//testQuickSort();
+	testMergeSort();
  	system("pause");
 
 	return 0;
