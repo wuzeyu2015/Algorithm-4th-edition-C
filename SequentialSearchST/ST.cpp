@@ -6,7 +6,7 @@
 
 void testSequentialSearchST(int minLen) {
 
-	SequentialSearchST<string, int>* st = new SequentialSearchST<string, int>;
+	SequentialSearchST<string, int>* st = new SequentialSearchST<string, int>();
 
 	ifstream ifs("tale.txt");//初始化一个输入流
 	string read;
@@ -19,22 +19,21 @@ void testSequentialSearchST(int minLen) {
 		else {
 			st->put(read, 1);
 		}
-		cout << read << endl;
+		//cout << read << endl;
 	}
 	// find a key with the highest frequency count
-	string max = " ";
-	st->put(max, 0);
-	for (string word : st->keys) {
-		if (st->get(word) > st->get(max))
-			max = word;
+	string maxword = " ";
+	st->put(maxword, 0);
+	for(string word : *st->keys()){
+		if (st->get(word) > st->get(maxword))
+			maxword = word;
 	}
-	cout << (max + " " + st->get(max));
-}
+	cout << maxword << st->get(maxword);
 }
 
 int main()
 {
-	testSequentialSearchST();
+	testSequentialSearchST(8);
 	system("pause");
     return 0;
 }

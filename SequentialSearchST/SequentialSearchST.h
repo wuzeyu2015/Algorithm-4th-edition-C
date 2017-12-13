@@ -2,6 +2,8 @@
 #include<iostream>  
 #include<fstream>  
 #include <string>
+#include <vector>
+#include <queue>
 using namespace std;
 
 template<class Key, class Value>
@@ -14,6 +16,7 @@ public:
 private:
 	class Node
 	{
+	public:
 		Node(Key key, Value val, Node* next){
 			this->key = key;
 			this->val = val;
@@ -28,6 +31,7 @@ public:
 	Value get(Key key);
 	void put(Key key, Value val);
 	bool contains(Key key);
+	vector<Key>* keys();//返回key的集合，用vector
 
 };
 

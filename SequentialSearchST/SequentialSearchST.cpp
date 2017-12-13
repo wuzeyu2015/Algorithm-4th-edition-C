@@ -41,3 +41,12 @@ bool SequentialSearchST<Key, Value>::contains(Key key){
 	}
 	return false;
 }
+
+template<class Key, class Value>
+vector<Key>* SequentialSearchST<Key, Value>::keys() {
+	vector<Key>* pQueue = new vector<Key>();
+	for (Node* pNode = pfirst; pNode != NULL; pNode = pNode->next)
+		pQueue->push_back(pNode->key);
+	return pQueue;
+}
+template class SequentialSearchST<string, int>;
