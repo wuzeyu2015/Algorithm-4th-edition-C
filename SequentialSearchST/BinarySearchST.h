@@ -16,6 +16,8 @@ public:
 private:
 	Key* key;
 	Value* val;
+	int N;
+	int rank(Key key);
 public:
 	Value get(Key key);
 	void put(Key key, Value val);
