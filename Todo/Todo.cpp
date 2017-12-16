@@ -2,14 +2,21 @@
 //                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 
 #include "stdafx.h"
+#include<string>
+#include <vector>
+using namespace std;
 
+string testdemo1(string a){
+	if (a == NULL);
+	return NULL;
+}
+string testdemo2(int a) {
+	if (a == NULL);
+	return NULL;
+}
 
 int main()
 {
-	const char* STR = "This is a too long "
-		"text string";
-	void(*func_p)(void) = NULL;
-
+	testdemo1(NULL);
     return 0;
 }
-

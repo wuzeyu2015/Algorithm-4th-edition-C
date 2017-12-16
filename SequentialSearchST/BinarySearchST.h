@@ -14,7 +14,7 @@ public:
 	~BinarySearchST();
 
 private:
-	Key* key;
+	Key* keyarr;
 	Value* val;
 	int N;
 	int rank(Key key);
@@ -22,7 +22,8 @@ public:
 	Value get(Key key);
 	void put(Key key, Value val);
 	bool contains(Key key);
-	vector<Key>* keys();//返回key的集合，用vector
+	int size();
+	bool isEmpty();
 
 };
 
