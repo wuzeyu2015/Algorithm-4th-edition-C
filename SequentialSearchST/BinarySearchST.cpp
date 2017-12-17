@@ -6,8 +6,8 @@ BinarySearchST<Key, Value>::BinarySearchST(int cap)
 {
 	keyarr = new Key[cap];
 	memset(keyarr, 0, cap * sizeof(Key));
-	val = new Value[cap];
-	memset(val, 0, cap * sizeof(Value));
+	valarr = new Value[cap];
+	memset(valarr, 0, cap * sizeof(Value));
 	N = 0;
 }
 
@@ -16,20 +16,32 @@ BinarySearchST<Key, Value>::~BinarySearchST()
 {
 	delete keyarr;
 	keyarr = NULL;
-	delete val;
-	val = NULL;
+	delete valarr;
+	valarr = NULL;
 }
 
 template<class Key, class Value>
 void BinarySearchST<Key, Value>::put(Key key, Value val) {
-
+	int i = rank(key);
+	if (i < N && keyarr[i] == key){
+		valarr[i] = val;
+		return;
+	}
+	for (int j = N; j > i; j--) {
+		keyarr[j] = keyarr[j - 1];
+		valarr[j] = valarr[j - 1];
+	}
+	keyarr[i] = key;
+	valarr[i] = val;
+	N++;
+		
 }
 
 template<class Key, class Value>
 Value BinarySearchST<Key, Value>::get(Key key) {
 	int i = rank(key);
 	if (i < N && keyarr[i] == key)
-		return val[i];
+		return valarr[i];
 	else
 		return NULL;
 }

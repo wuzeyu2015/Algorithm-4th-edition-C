@@ -15,7 +15,7 @@ public:
 
 private:
 	Key* keyarr;
-	Value* val;
+	Value* valarr;
 	int N;
 	int rank(Key key);
 public:
