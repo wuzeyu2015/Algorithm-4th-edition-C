@@ -13,18 +13,21 @@ public:
 	BinarySearchST(int cap);
 	~BinarySearchST();
 
+public:
+	Value get(Key key);
+	void put(Key key, Value val);
+	bool contains(Key key);
+	vector<Key>* keys();//必须用接口读取keys
+	int size();
+	bool isEmpty();
+
+	static void testmain(int minLen);
+
 private:
 	Key* keyarr;
 	Value* valarr;
 	int N;
 	int rank(Key key);
-public:
-	Value get(Key key);
-	void put(Key key, Value val);
-	bool contains(Key key);
-	int size();
-	bool isEmpty();
-
 };
 
 

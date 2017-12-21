@@ -47,10 +47,20 @@ Value BinarySearchST<Key, Value>::get(Key key) {
 }
 template<class Key, class Value>
 bool BinarySearchST<Key, Value>::contains(Key key) {
-
+	for (int i = 0; i < N; i++) {
+		if (keyarr[i] == key)
+			return true;
+	}
 	return false;
 }
-
+template<class Key, class Value>
+vector<Key>* BinarySearchST<Key, Value>::keys() {
+	vector<Key>* pQueue = new vector<Key>();
+	for (int i = 0; i < N; i++){
+		pQueue->push_back(keyarr[i]);
+	}
+	return pQueue;
+}
 template<class Key, class Value>
 int BinarySearchST<Key, Value>::rank(Key key) {
 	int lo = 0;
@@ -76,3 +86,33 @@ bool BinarySearchST<Key, Value>::isEmpty() {
 }
 
 template class BinarySearchST<string, int>;
+
+//测试入口函数
+template<class Key, class Value>
+void BinarySearchST<Key, Value>::testmain(int minLen) {
+
+	BinarySearchST<string, int>* st = new BinarySearchST<string, int>(1000000);
+
+	ifstream ifs("tale.txt");//初始化一个输入流
+	string read;
+	while (getline(ifs, read, ' ')) //以‘ ’为分割（读取单词）  
+	{
+		if (read.length() < minLen) continue;
+		if (st->contains(read)) {
+			st->put(read, st->get(read) + 1);
+		}
+		else {
+			st->put(read, 1);
+		}
+		//cout << read << endl;
+	}
+	// find a key with the highest frequency count
+	string maxfreqstring = " ";
+	st->put(maxfreqstring, 0);
+	for (string cur : *st->keys()) {
+		if (st->get(cur) > st->get(maxfreqstring))
+			maxfreqstring = cur;
+	}
+	cout << "highest frequency:" << maxfreqstring << endl;
+	cout << "count:" << st->get(maxfreqstring) << endl;
+}
