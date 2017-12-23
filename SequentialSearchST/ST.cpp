@@ -9,11 +9,12 @@
 
 int main()
 {
-	//SequentialSearchST<string, int>::testmain(8);
-	BinarySearchST<string, int>::testmain(8);
+	//SequentialSearchST<string, int>::main(8);
+	BinarySearchST<string, int>::main(1);
 	system("pause");
     return 0;
 }
 
 //1.string a == NULL 的问题
 //2.模板实例化的问题
+//3.string对象

@@ -21,47 +21,6 @@ BinarySearchST<Key, Value>::~BinarySearchST()
 }
 
 template<class Key, class Value>
-void BinarySearchST<Key, Value>::put(Key key, Value val) {
-	int i = rank(key);
-	if (i < N && keyarr[i] == key){
-		valarr[i] = val;
-		return;
-	}
-	for (int j = N; j > i; j--) {
-		keyarr[j] = keyarr[j - 1];
-		valarr[j] = valarr[j - 1];
-	}
-	keyarr[i] = key;
-	valarr[i] = val;
-	N++;
-		
-}
-
-template<class Key, class Value>
-Value BinarySearchST<Key, Value>::get(Key key) {
-	int i = rank(key);
-	if (i < N && keyarr[i] == key)
-		return valarr[i];
-	else
-		return NULL;
-}
-template<class Key, class Value>
-bool BinarySearchST<Key, Value>::contains(Key key) {
-	for (int i = 0; i < N; i++) {
-		if (keyarr[i] == key)
-			return true;
-	}
-	return false;
-}
-template<class Key, class Value>
-vector<Key>* BinarySearchST<Key, Value>::keys() {
-	vector<Key>* pQueue = new vector<Key>();
-	for (int i = 0; i < N; i++){
-		pQueue->push_back(keyarr[i]);
-	}
-	return pQueue;
-}
-template<class Key, class Value>
 int BinarySearchST<Key, Value>::rank(Key key) {
 	int lo = 0;
 	int hi = N - 1;
@@ -77,6 +36,46 @@ int BinarySearchST<Key, Value>::rank(Key key) {
 	return lo;
 }
 template<class Key, class Value>
+Value BinarySearchST<Key, Value>::get(Key key) {
+	int i = rank(key);
+	if (i < N && keyarr[i] == key)
+		return valarr[i];
+	else
+		return NULL;
+}
+template<class Key, class Value>
+void BinarySearchST<Key, Value>::put(Key key, Value val) {
+	int i = rank(key);
+	if (i < N && keyarr[i] == key){
+		valarr[i] = val;
+		return;
+	}
+	for (int j = N; j > i; j--) {
+		keyarr[j] = keyarr[j - 1];
+		valarr[j] = valarr[j - 1];
+	}
+	keyarr[i] = key;
+	valarr[i] = val;
+	N++;
+		
+}
+template<class Key, class Value>
+vector<Key>* BinarySearchST<Key, Value>::keys() {
+	vector<Key>* pQueue = new vector<Key>();
+	for (int i = 0; i < N; i++) {
+		pQueue->push_back(keyarr[i]);
+	}
+	return pQueue;
+}
+template<class Key, class Value>
+bool BinarySearchST<Key, Value>::contains(Key key) {
+	for (int i = 0; i < N; i++) {
+		if (keyarr[i] == key)
+			return true;
+	}
+	return false;
+}
+template<class Key, class Value>
 int BinarySearchST<Key, Value>::size() {
 	return N;
 }
@@ -87,9 +86,11 @@ bool BinarySearchST<Key, Value>::isEmpty() {
 
 template class BinarySearchST<string, int>;
 
+
+
 //²âÊÔÈë¿Úº¯Êý
 template<class Key, class Value>
-void BinarySearchST<Key, Value>::testmain(int minLen) {
+void BinarySearchST<Key, Value>::main(int minLen) {
 
 	BinarySearchST<string, int>* st = new BinarySearchST<string, int>(1000000);
 
@@ -104,7 +105,7 @@ void BinarySearchST<Key, Value>::testmain(int minLen) {
 		else {
 			st->put(read, 1);
 		}
-		//cout << read << endl;
+		cout << read << endl;
 	}
 	// find a key with the highest frequency count
 	string maxfreqstring = " ";
@@ -113,6 +114,7 @@ void BinarySearchST<Key, Value>::testmain(int minLen) {
 		if (st->get(cur) > st->get(maxfreqstring))
 			maxfreqstring = cur;
 	}
+	cout << "there are:" <<st->size() << " different words" << endl;
 	cout << "highest frequency:" << maxfreqstring << endl;
 	cout << "count:" << st->get(maxfreqstring) << endl;
 }

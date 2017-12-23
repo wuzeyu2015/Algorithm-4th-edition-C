@@ -6,17 +6,21 @@
 #include <vector>
 using namespace std;
 
-string testdemo1(string a){
-	if (a == NULL);
-	return NULL;
-}
-string testdemo2(int a) {
-	if (a == NULL);
-	return NULL;
-}
+// string testdemo1(string a){
+// 	if (a == NULL);
+// 	return NULL;
+// }
+// string testdemo2(int a) {
+// 	if (a == NULL);
+// 	return NULL;
+// }
 
 int main()
 {
-	testdemo1(NULL);
+	string strtest = "fffffffffffffffffffffffffffffffffffffffffffffffff";
+	int ret = sizeof(strtest);
+	string* p = new string[4];
+	memset(p, 0, 4 * sizeof(string));
+	//testdemo1(NULL);
     return 0;
 }

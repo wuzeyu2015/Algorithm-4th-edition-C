@@ -17,11 +17,11 @@ public:
 	Value get(Key key);
 	void put(Key key, Value val);
 	bool contains(Key key);
-	vector<Key>* keys();//必须用接口读取keys
+	vector<Key>* keys();//读取keys
 	int size();
 	bool isEmpty();
 
-	static void testmain(int minLen);
+	static void main(int minLen);
 
 private:
 	Key* keyarr;

@@ -17,9 +17,9 @@ public:
 	Value get(Key key);
 	void put(Key key, Value val);
 	bool contains(Key key);
-	vector<Key>* keys();//必须用接口读取key的集合，用vector
+	vector<Key>* keys();//读取key的集合，用vector
 
-	static void testmain(int minLen);
+	static void main(int minLen);
 
 private:
 	class Node

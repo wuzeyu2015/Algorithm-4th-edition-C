@@ -53,7 +53,7 @@ template class SequentialSearchST<string, int>;
 
 //²âÊÔÈë¿Úº¯Êı
 template<class Key, class Value>
-void SequentialSearchST<Key, Value>::testmain(int minLen) {
+void SequentialSearchST<Key, Value>::main(int minLen) {
 
 	SequentialSearchST<string, int>* st = new SequentialSearchST<string, int>();
 
