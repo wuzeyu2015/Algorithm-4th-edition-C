@@ -46,18 +46,22 @@ Value BinarySearchST<Key, Value>::get(Key key) {
 template<class Key, class Value>
 void BinarySearchST<Key, Value>::put(Key key, Value val) {
 	int i = rank(key);
-	if (i < N && keyarr[i] == key){
+	if (i < N && keyarr[i] == key){//find the key
 		valarr[i] = val;
 		return;
 	}
-	for (int j = N; j > i; j--) {
+	for (int j = N; j > i; j--) {//did not find the key, but i indicate the count or the index+1 less than key;
 		keyarr[j] = keyarr[j - 1];
 		valarr[j] = valarr[j - 1];
 	}
 	keyarr[i] = key;
 	valarr[i] = val;
 	N++;
-		
+	
+// 	for (int i = 0; i < N; i++) {
+// 		keyarr[j] = keyarr[j - 1];
+// 		valarr[j] = valarr[j - 1];
+// 	}
 }
 template<class Key, class Value>
 vector<Key>* BinarySearchST<Key, Value>::keys() {
@@ -67,14 +71,12 @@ vector<Key>* BinarySearchST<Key, Value>::keys() {
 	}
 	return pQueue;
 }
+
 template<class Key, class Value>
 bool BinarySearchST<Key, Value>::contains(Key key) {
-	for (int i = 0; i < N; i++) {
-		if (keyarr[i] == key)
-			return true;
-	}
-	return false;
+	return get(key) != NULL;
 }
+
 template<class Key, class Value>
 int BinarySearchST<Key, Value>::size() {
 	return N;
@@ -92,11 +94,11 @@ template class BinarySearchST<string, int>;
 template<class Key, class Value>
 void BinarySearchST<Key, Value>::main(int minLen) {
 
-	BinarySearchST<string, int>* st = new BinarySearchST<string, int>(1000000);
+	BinarySearchST<string, int>* st = new BinarySearchST<string, int>(1382);
 
 	ifstream ifs("tale.txt");//初始化一个输入流
 	string read;
-	while (getline(ifs, read, ' ')) //以‘ ’为分割（读取单词）  
+	while (ifs >> read)
 	{
 		if (read.length() < minLen) continue;
 		if (st->contains(read)) {
@@ -105,12 +107,13 @@ void BinarySearchST<Key, Value>::main(int minLen) {
 		else {
 			st->put(read, 1);
 		}
-		cout << read << endl;
+		//cout << read << endl;
 	}
 	// find a key with the highest frequency count
 	string maxfreqstring = " ";
 	st->put(maxfreqstring, 0);
-	for (string cur : *st->keys()) {
+	vector<Key>* vp = st->keys();
+	for (string cur : *vp) {
 		if (st->get(cur) > st->get(maxfreqstring))
 			maxfreqstring = cur;
 	}

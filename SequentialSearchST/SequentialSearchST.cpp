@@ -59,7 +59,7 @@ void SequentialSearchST<Key, Value>::main(int minLen) {
 
 	ifstream ifs("tale.txt");//初始化一个输入流
 	string read;
-	while (getline(ifs, read, ' ')) //以‘ ’为分割（读取单词）  
+	while (ifs >> read)
 	{
 		if (read.length() < minLen) continue;
 		if (st->contains(read)) {

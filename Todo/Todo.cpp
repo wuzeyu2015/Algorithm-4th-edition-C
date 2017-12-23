@@ -6,14 +6,10 @@
 #include <vector>
 using namespace std;
 
-// string testdemo1(string a){
-// 	if (a == NULL);
-// 	return NULL;
-// }
-// string testdemo2(int a) {
-// 	if (a == NULL);
-// 	return NULL;
-// }
+
+
+
+
 
 int main()
 {

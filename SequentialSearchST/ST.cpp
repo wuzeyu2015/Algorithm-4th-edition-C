@@ -16,5 +16,14 @@ int main()
 }
 
 //1.string a == NULL 的问题
+// string testdemo1(string a){
+// 	if (a == NULL);
+// 	return NULL;
+// }
+// string testdemo2(int a) {
+// 	if (a == NULL);
+// 	return NULL;
+// }
 //2.模板实例化的问题
-//3.string对象
+//3.用到了string对象数组keyarry，针对数组的操作可以和内置数组相同
+//4.while (getline(ifs, read, ' ')) //以‘ ’为分割（读取单词） 遇到文件换行时读入了"\nlpp"
