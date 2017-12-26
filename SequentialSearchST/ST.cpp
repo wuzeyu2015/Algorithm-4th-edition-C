@@ -4,13 +4,14 @@
 #include "stdafx.h"
 #include "SequentialSearchST.h"
 #include "BinarySearchST.h"
-
+#include "BST.h"
 
 
 int main()
 {
-	//SequentialSearchST<string, int>::main(8);
-	BinarySearchST<string, int>::main(1);
+	//SequentialSearchST<string, int>::main(1);
+	//BinarySearchST<string, int>::main(1);
+	BST<string, int>::main(1);
 	system("pause");
     return 0;
 }

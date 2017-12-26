@@ -22,26 +22,28 @@
 #include <queue>
 using namespace std;
 
+
+template<class Key, class Value>
+class TreeNode
+{
+public:
+	TreeNode(Key key, Value val, int N)
+	{
+		this->key = key; this->val = val; this->N = N;
+	}
+	Key key;
+	Value val;
+	TreeNode* left;
+	TreeNode* right;
+	int N; //nodes in subtree rooted here
+};
 template<class Key, class Value>
 class BST
 {
 public:
 	BST();
 	~BST();
-public:
-	class TreeNode
-	{
-	public:
-		TreeNode(Key key, Value val, int N)
-		{
-			this->key = key; this->val = val; this->N = N;
-		}
-		Key key;
-		Value val;
-		TreeNode* left;
-		TreeNode* right;
-		int N; //nodes in subtree rooted here
-	};
+
 public:
 	void put(Key key, Value val);
 private:
@@ -84,7 +86,6 @@ TreeNode* BST<Key, Value>::put(TreeNode* pnode, Key key, Value val)
 		pnode->val = val;
 		return pnode;
 	}
-
 	else if (pnode->key < key)
 		pnode->right = put(pnode->right, key, val);
 	else if (pnode->key > key)

@@ -48,7 +48,7 @@ public:
 private:
 	int rank(Key key);
 	Value get(TreeNode* root, Key key);
-	TreeNode* put(TreeNode* root, Key key, Value val);
+	TreeNode* put(TreeNode* pnode, Key key, Value val);
 
 public:
 	//test entrance

@@ -94,7 +94,7 @@ template class BinarySearchST<string, int>;
 template<class Key, class Value>
 void BinarySearchST<Key, Value>::main(int minLen) {
 
-	BinarySearchST<string, int>* st = new BinarySearchST<string, int>(1382);
+	BinarySearchST<string, int>* st = new BinarySearchST<string, int>(2000);
 
 	ifstream ifs("tale.txt");//初始化一个输入流
 	string read;
