@@ -32,7 +32,7 @@ public:
 	bool contains(Key key);
 	int size();
 	bool isEmpty();
-	vector<Key>* keys();//∂¡»°keys
+	vector<Key>& keys();//∂¡»°keys
 
 	//orderd st can extend these api as follows
 	Key min();

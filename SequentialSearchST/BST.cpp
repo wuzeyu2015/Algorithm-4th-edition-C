@@ -52,6 +52,9 @@ typename BST<Key, Value>::TreeNode* BST<Key, Value>::put(TreeNode* pnode, Key ke
 		pnode->right = put(pnode->right, key, val);
 	else if (pnode->key > key)
 		pnode->left = put(pnode->left, key, val);
+	else
+		pnode->val = val;
+
 }
 template<class Key, class Value>
 bool BST<Key, Value>::contains(Key key) {
@@ -66,7 +69,9 @@ bool BST<Key, Value>::isEmpty() {
 	return N == 0;
 }
 template<class Key, class Value>
-vector<Key>* BST<Key, Value>::keys() {
+vector<Key>& BST<Key, Value>::keys() {
+	vector<Key>* pQueue = new vector<Key>();
+
 	return NULL;
 }
 
