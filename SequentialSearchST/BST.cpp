@@ -35,23 +35,23 @@ Value BST<Key, Value>::get(TreeNode* root, Key key)
 template<class Key, class Value>
 void BST<Key, Value>::put(Key key, Value val)
 {
-	proot = put(proot, key, val);
+	put(proot, key, val);
 }
 
 template<class Key, class Value>
-typename BST<Key, Value>::TreeNode* BST<Key, Value>::put(TreeNode* pnode, Key key, Value val)
+typename BST<Key, Value>::TreeNode*& BST<Key, Value>::put(TreeNode* &pnode, Key key, Value val)
 {
 	if (pnode == NULL)
-		return new TreeNode(key, val, 1);
+		return (pnode = new TreeNode(key, val, 1));
 	if (pnode->key == key) {
 		pnode->val = val;
 		return pnode;
 	}
 
 	else if (pnode->key < key)
-		pnode->right = put(pnode->right, key, val);
+		put(pnode->right, key, val);
 	else if (pnode->key > key)
-		pnode->left = put(pnode->left, key, val);
+		put(pnode->left, key, val);
 	else
 		pnode->val = val;
 
@@ -69,12 +69,19 @@ bool BST<Key, Value>::isEmpty() {
 	return N == 0;
 }
 template<class Key, class Value>
-vector<Key>& BST<Key, Value>::keys() {
-	vector<Key>* pQueue = new vector<Key>();
-
-	return NULL;
+vector<Key>* BST<Key, Value>::keys() {
+	vector<Key>* pkeyarr = new vector<Key>();
+	keys(proot, pkeyarr);
+	return pkeyarr;
 }
-
+template<class Key, class Value>
+void BST<Key, Value>::keys(TreeNode* proot, vector<Key>* pkeyarr) {
+	if (proot == NULL)
+		return;
+	pkeyarr->push_back(proot->key);
+	keys(proot->left, pkeyarr);
+	keys(proot->right, pkeyarr);
+}
 template class BST<string, int>;
 
 

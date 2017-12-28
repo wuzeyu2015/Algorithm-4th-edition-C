@@ -28,3 +28,4 @@ int main()
 //2.模板实例化的问题
 //3.用到了string对象数组keyarry，针对数组的操作可以和内置数组相同
 //4.while (getline(ifs, read, ' ')) //以‘ ’为分割（读取单词） 遇到文件换行时读入了"\nlpp"
+//5.函数参数传递指针TreeNode*注意引用问题

@@ -19,6 +19,8 @@ private:
 		TreeNode(Key key, Value val, int N)
 		{
 			this->key = key; this->val = val; this->N = N;
+			this->left = NULL;
+			this->right = NULL;
 		}
 		Key key;
 		Value val;
@@ -32,7 +34,7 @@ public:
 	bool contains(Key key);
 	int size();
 	bool isEmpty();
-	vector<Key>& keys();//∂¡»°keys
+	vector<Key>* keys();//∂¡»°keys
 
 	//orderd st can extend these api as follows
 	Key min();
@@ -48,8 +50,8 @@ public:
 private:
 	int rank(Key key);
 	Value get(TreeNode* root, Key key);
-	TreeNode* put(TreeNode* pnode, Key key, Value val);
-
+	TreeNode*& put(TreeNode*& pnode, Key key, Value val);
+	void keys(TreeNode* proot, vector<Key>* pkeyarr);
 public:
 	//test entrance
 	static void main(int minLen);
