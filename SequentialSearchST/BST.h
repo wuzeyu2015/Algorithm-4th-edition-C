@@ -55,7 +55,7 @@ private:
 public:
 	//test entrance
 	static void main(int minLen);
-
+	static void main2(int minLen);//小规模数据测试extended api as shown above
 private:
 	int N;
 	TreeNode* proot; // root of BST
