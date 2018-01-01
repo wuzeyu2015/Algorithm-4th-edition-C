@@ -47,17 +47,20 @@ public:
 	void deleteMax();
 	int size(Key lo, Key hi); //number of keys in[lo..hi]
 	vector<Key>* keys(Key lo, Key hi); //keys in[lo..hi], in sorted order
+
 private:
 	int rank(Key key);
+	int size(TreeNode* root);
 	Value get(TreeNode* root, Key key);
 	TreeNode*& put(TreeNode*& pnode, Key key, Value val);
 	void keys(TreeNode* proot, vector<Key>* pkeyarr);
+
+	TreeNode* floor(TreeNode* pNode, Key key);
 public:
 	//test entrance
 	static void main(int minLen);
 	static void main2(int minLen);//小规模数据测试extended api as shown above
 private:
-	int N;
 	TreeNode* proot; // root of BST
 
 };

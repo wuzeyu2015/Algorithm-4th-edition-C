@@ -43,18 +43,15 @@ typename BST<Key, Value>::TreeNode*& BST<Key, Value>::put(TreeNode* &pnode, Key 
 {
 	if (pnode == NULL)
 		return (pnode = new TreeNode(key, val, 1));
-	if (pnode->key == key) {
-		pnode->val = val;
-		return pnode;
-	}
 
 	else if (pnode->key < key)
 		put(pnode->right, key, val);
 	else if (pnode->key > key)
 		put(pnode->left, key, val);
-	else
+	else if(pnode->key == key)
 		pnode->val = val;
 
+	pnode->N = 1 + size(pnode->left) + size(pnode->right);
 }
 template<class Key, class Value>
 bool BST<Key, Value>::contains(Key key) {
@@ -62,8 +59,15 @@ bool BST<Key, Value>::contains(Key key) {
 }
 template<class Key, class Value>
 int BST<Key, Value>::size() {
-	return N;
+	return size(proot);
 }
+template<class Key, class Value>
+int BST<Key, Value>::size(TreeNode* proot) {
+	if (proot == NULL) 
+		return 0;
+	return proot->N;
+}
+
 template<class Key, class Value>
 int BST<Key, Value>::min() {
 	return N;
@@ -74,7 +78,7 @@ int BST<Key, Value>::max() {
 }
 template<class Key, class Value>
 bool BST<Key, Value>::isEmpty() {
-	return N == 0;
+	return size() == 0;
 }
 template<class Key, class Value>
 vector<Key>* BST<Key, Value>::keys() {
@@ -90,6 +94,30 @@ void BST<Key, Value>::keys(TreeNode* proot, vector<Key>* pkeyarr) {
 	keys(proot->left, pkeyarr);
 	keys(proot->right, pkeyarr);
 }
+
+template<class Key, class Value>
+Key BST<Key, Value>::floor(Key key) {
+	if (isEmpty()) throw new exception("calls floor() with empty symbol table");
+	TreeNode* pNode = floor(proot, key);
+	if (pNode == NULL) return NULL;
+	else return pNode->key;	
+}
+template<class Key, class Value>
+typename BST<Key, Value>::TreeNode* BST<Key, Value>::floor(TreeNode* proot, Key key) {
+	if (proot == NULL)
+		return NULL;
+	if (key < proot->key)
+		return floor(proot->left, key);
+	else if (key > proot->key) {
+		TreeNode*  pret = floor(proot->right, key);
+		if (pret)   return pret;
+		else	    return proot;
+	}
+	else if (key == proot->key)
+		return proot;
+
+}
+
 template class BST<string, int>;
 
 
