@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "BST.h"
-
+#include <sstream>
 
 template<class Key, class Value>
 BST<Key, Value>::BST()
@@ -69,12 +69,24 @@ int BST<Key, Value>::size(TreeNode* proot) {
 }
 
 template<class Key, class Value>
-int BST<Key, Value>::min() {
-	return N;
+Key BST<Key, Value>::min() {
+	if (isEmpty()) throw new exception("calls min() with empty symbol table");
+	return min(proot);
 }
 template<class Key, class Value>
-int BST<Key, Value>::max() {
-	return N;
+Key BST<Key, Value>::min(TreeNode* pNode) {
+	if (pNode->left) return min(pNode->left);
+	else             return pNode->key;
+}
+template<class Key, class Value>
+Key BST<Key, Value>::max() {
+	if (isEmpty()) throw new exception("calls min() with empty symbol table");
+	return max(proot);
+}
+template<class Key, class Value>
+Key BST<Key, Value>::max(TreeNode* pNode) {
+	if (pNode->right) return max(pNode->right);
+	else              return pNode->key;
 }
 template<class Key, class Value>
 bool BST<Key, Value>::isEmpty() {
@@ -115,8 +127,29 @@ typename BST<Key, Value>::TreeNode* BST<Key, Value>::floor(TreeNode* proot, Key 
 	}
 	else if (key == proot->key)
 		return proot;
-
 }
+template<class Key, class Value>
+Key BST<Key, Value>::ceiling(Key key) {
+	if (isEmpty()) throw new exception("calls floor() with empty symbol table");
+	TreeNode* pNode = ceiling(proot, key);
+	if (pNode == NULL) return NULL;
+	else return pNode->key;
+}
+template<class Key, class Value>
+typename BST<Key, Value>::TreeNode* BST<Key, Value>::ceiling(TreeNode* proot, Key key) {
+	if (proot == NULL)
+		return NULL;
+	if (key < proot->key){
+		TreeNode*  pret = ceiling(proot->left, key);
+		if (pret)   return pret;
+		else	    return proot;
+	}
+	else if (key > proot->key)
+		return ceiling(proot->right, key);
+	else if (key == proot->key)
+		return proot;
+}
+
 
 template class BST<string, int>;
 
@@ -155,16 +188,17 @@ void BST<Key, Value>::main(int minLen) {
 }
 //²âÊÔÈë¿Úº¯Êý2
 template<class Key, class Value>
-void BST<Key, Value>::main2(int minLen) {
+void BST<Key, Value>::main2() {
 
 	BST<string, int>* st = new BST<string, int>();
-
-	string keys[] = { "S", "E" };
+	string keys[] = { "S", "E"  "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E" };
 	for (int i = 0; i < sizeof(keys)/sizeof(string); i++)
 		st->put(keys[i], i);
+
 	cout << "size = " << st->size() << endl;
 	cout << "min = " << st->min() << endl;
 	cout << "max = " << st->max() << endl;
+
 
 	// print keys in order using allKeys()
 	cout << "Testing keys()" << endl;
@@ -180,15 +214,21 @@ void BST<Key, Value>::main2(int minLen) {
 // 		StdOut.println(i + " " + st.select(i));
 // 	StdOut.println();
 // 
-// 	// test rank, floor, ceiling
-// 	StdOut.println("key rank floor ceil");
-// 	StdOut.println("-------------------");
-// 	for (char i = 'A'; i <= 'Z'; i++) {
-// 		String s = i + "";
-// 		StdOut.printf("%2s %4d %4s %4s\n", s, st.rank(s), st.floor(s), st.ceiling(s));
-// 	}
-// 	StdOut.println();
-// 
+
+ 	// test rank, floor, ceiling
+	cout << "key rank floor ceil" << endl;
+	cout << "-------------------" << endl;
+
+	string s;
+	for (char i = 'A'; i <= 'Z'; i++) {
+		stringstream stream; 
+		stream << i;
+		s = stream.str();
+		cout << s << " " << st->floor(s) << /*" "<<st->ceiling(s) <<*/ endl;
+		//printf("%2s %4d %4s %4s\n", s, st->rank(s), st->floor(s), st->ceiling(s));
+	}
+
+
 // 	// test range search and range count
 // 	String[] from = { "A", "Z", "X", "0", "B", "C" };
 // 	String[] to = { "Z", "A", "X", "Z", "G", "L" };

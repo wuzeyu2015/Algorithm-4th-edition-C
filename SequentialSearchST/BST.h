@@ -50,16 +50,18 @@ public:
 
 private:
 	int rank(Key key);
-	int size(TreeNode* root);
-	Value get(TreeNode* root, Key key);
+	int size(TreeNode* proot);
+	Value get(TreeNode* proot, Key key);
 	TreeNode*& put(TreeNode*& pnode, Key key, Value val);
 	void keys(TreeNode* proot, vector<Key>* pkeyarr);
-
+	Key min(TreeNode* proot);
+	Key max(TreeNode* proot);
 	TreeNode* floor(TreeNode* pNode, Key key);
+	TreeNode* ceiling(TreeNode* pNode, Key key);
 public:
 	//test entrance
 	static void main(int minLen);
-	static void main2(int minLen);//小规模数据测试extended api as shown above
+	static void main2();//小规模数据测试extended api as shown above
 private:
 	TreeNode* proot; // root of BST
 

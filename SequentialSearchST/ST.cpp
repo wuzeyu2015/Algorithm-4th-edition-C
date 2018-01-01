@@ -11,7 +11,8 @@ int main()
 {
 	//SequentialSearchST<string, int>::main(1);
 	//BinarySearchST<string, int>::main(1);
-	BST<string, int>::main(1);
+	//BST<string, int>::main(1);
+	BST<string, int>::main2();
 	system("pause");
     return 0;
 }
