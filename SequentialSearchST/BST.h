@@ -28,6 +28,7 @@ private:
 		TreeNode* right;
 		int N; //nodes in subtree rooted here
 	};
+//api
 public:
 	Value get(Key key);
 	void put(Key key, Value val);
@@ -39,29 +40,35 @@ public:
 	//orderd st can extend these api as follows
 	Key min();
 	Key max();
-	void del(Key key);
 	Key floor(Key key);
 	Key ceiling(Key key);
 	Key select(int k);// key of rank k
+	int rank(Key key);
 	void deleteMin();
 	void deleteMax();
+	void del(Key key);
 	int size(Key lo, Key hi); //number of keys in[lo..hi]
 	vector<Key>* keys(Key lo, Key hi); //keys in[lo..hi], in sorted order
 
 private:
-	int rank(Key key);
+	Key min(TreeNode* proot);
+	Key max(TreeNode* proot);
 	int size(TreeNode* proot);
 	Value get(TreeNode* proot, Key key);
 	TreeNode*& put(TreeNode*& pnode, Key key, Value val);
 	void keys(TreeNode* proot, vector<Key>* pkeyarr);
-	Key min(TreeNode* proot);
-	Key max(TreeNode* proot);
 	TreeNode* floor(TreeNode* pNode, Key key);
 	TreeNode* ceiling(TreeNode* pNode, Key key);
+	int rank(TreeNode* proot, Key key);
+
+	TreeNode* deleteMin(TreeNode* proot);
+	TreeNode* deleteMax(TreeNode* proot);
+	TreeNode* del(TreeNode* proot, Key key);
+
 public:
 	//test entrance
 	static void main(int minLen);
-	static void main2();//小规模数据测试extended api as shown above
+	static void main2();//小规模数据测试 extended api as shown above
 private:
 	TreeNode* proot; // root of BST
 

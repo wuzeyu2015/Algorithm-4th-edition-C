@@ -8,15 +8,16 @@ using namespace std;
 
 
 
-
-
+string testdemo2(int a) {
+	if (a == NULL);
+	return NULL;
+}
+string testdd(){
+	return NULL;
+}
 
 int main()
 {
-	string strtest = "fffffffffffffffffffffffffffffffffffffffffffffffff";
-	int ret = sizeof(strtest);
-	string* p = new string[4];
-	memset(p, 0, 4 * sizeof(string));
-	//testdemo1(NULL);
+	testdd();
     return 0;
 }

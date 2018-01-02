@@ -57,11 +57,6 @@ void BinarySearchST<Key, Value>::put(Key key, Value val) {
 	keyarr[i] = key;
 	valarr[i] = val;
 	N++;
-	
-// 	for (int i = 0; i < N; i++) {
-// 		keyarr[j] = keyarr[j - 1];
-// 		valarr[j] = valarr[j - 1];
-// 	}
 }
 template<class Key, class Value>
 vector<Key>* BinarySearchST<Key, Value>::keys() {
