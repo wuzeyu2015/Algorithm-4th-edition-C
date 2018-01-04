@@ -48,7 +48,7 @@ typename BST<Key, Value>::TreeNode*& BST<Key, Value>::put(TreeNode* &pnode, Key 
 		put(pnode->right, key, val);
 	else if (pnode->key > key)
 		put(pnode->left, key, val);
-	else if(pnode->key == key)
+	else if (pnode->key == key)
 		pnode->val = val;
 
 	pnode->N = 1 + size(pnode->left) + size(pnode->right);
@@ -63,7 +63,7 @@ int BST<Key, Value>::size() {
 }
 template<class Key, class Value>
 int BST<Key, Value>::size(TreeNode* proot) {
-	if (proot == NULL) 
+	if (proot == NULL)
 		return 0;
 	return proot->N;
 }
@@ -190,7 +190,7 @@ Key BST<Key, Value>::floor(Key key) {
 	if (isEmpty()) throw new exception("calls floor() with empty symbol table");
 	TreeNode* pNode = floor(proot, key);
 	if (pNode == NULL) return NULL;
-	else return pNode->key;	
+	else return pNode->key;
 }
 template<class Key, class Value>
 typename BST<Key, Value>::TreeNode* BST<Key, Value>::floor(TreeNode* proot, Key key) {
@@ -218,7 +218,7 @@ template<class Key, class Value>
 typename BST<Key, Value>::TreeNode* BST<Key, Value>::ceiling(TreeNode* proot, Key key) {
 	if (proot == NULL)
 		return NULL;
-	if (key < proot->key){
+	if (key < proot->key) {
 		TreeNode*  pret = ceiling(proot->left, key);
 		if (pret)   return pret;
 		else	    return proot;
@@ -237,7 +237,7 @@ void BST<Key, Value>::deleteMin() {
 }
 template<class Key, class Value>
 typename BST<Key, Value>::TreeNode* BST<Key, Value>::deleteMin(TreeNode* proot) {
-	if (proot->left == NULL){//proot此时为min节点
+	if (proot->left == NULL) {//proot此时为min节点
 		TreeNode* temp = proot->right;
 		delete proot;
 		return temp;//返回ceiling(min)
@@ -253,7 +253,7 @@ template<class Key, class Value>
 void BST<Key, Value>::deleteMax() {
 	if (isEmpty()) throw new exception("Symbol table underflow");
 	proot = deleteMax(proot);//必须返回给proot
-	//assert check();
+							 //assert check();
 }
 template<class Key, class Value>
 typename BST<Key, Value>::TreeNode* BST<Key, Value>::deleteMax(TreeNode* proot) {
@@ -279,18 +279,18 @@ template<class Key, class Value>
 typename BST<Key, Value>::TreeNode* BST<Key, Value>::del(TreeNode* proot, Key key) {
 	if (proot == NULL)//未命中key结束递归
 		return NULL;
-	if (proot->key == key){//命中key
-		if (proot->left == NULL){
+	if (proot->key == key) {//命中key
+		if (proot->left == NULL) {
 			TreeNode* pret = proot->right;
 			delete proot;
 			return pret;
 		}
-		if (proot->right == NULL){
+		if (proot->right == NULL) {
 			TreeNode* pret = proot->left;
 			delete proot;
 			return pret;
 		}
-		else{//两边都有节点
+		else {//两边都有节点
 			TreeNode* pret = new TreeNode(nodemin(proot->right));
 			pret->left = proot->left;
 			pret->right = deleteMin(proot->right);
@@ -305,7 +305,7 @@ typename BST<Key, Value>::TreeNode* BST<Key, Value>::del(TreeNode* proot, Key ke
 	proot->N = 1 + size(proot->left) + size(proot->right);
 	return proot;
 }
-template class BST<string, int>;
+
 //测试入口函数
 template<class Key, class Value>
 void BST<Key, Value>::main(int minLen) {
@@ -344,7 +344,7 @@ void BST<Key, Value>::main2() {
 
 	BST<string, int>* st = new BST<string, int>();
 	string keys[] = { "S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E" };
-	for (int i = 0; i < sizeof(keys)/sizeof(string); i++)
+	for (int i = 0; i < sizeof(keys) / sizeof(string); i++)
 		st->put(keys[i], i);
 
 	cout << "size = " << st->size() << endl;
@@ -354,33 +354,33 @@ void BST<Key, Value>::main2() {
 
 	// print keys in order using allKeys()
 	cout << "Testing keys()" << endl;
-	cout << "--------------------------------"<< endl;
+	cout << "--------------------------------" << endl;
 	vector<Key>* pkeys = st->keys();
 	for (string word : *pkeys)
-		cout << word <<" "<< st->get(word) << endl;
+		cout << word << " " << st->get(word) << endl;
 
 	// print keys in order using select
 	cout << "Testing select" << endl;
-	cout << "-----------------"<<endl;
+	cout << "-----------------" << endl;
 	for (int i = 0; i < st->size(); i++)
 		cout << i << " " << st->select(i) << endl;
 
- 	// test rank, floor, ceiling
+	// test rank, floor, ceiling
 	cout << "Testing key rank(key) floor(key) ceil(key)" << endl;
 	cout << "--------------------------------" << endl;
 
 	string s;
 	for (char i = 'A'; i <= 'Z'; i++) {
-		stringstream stream; 
+		stringstream stream;
 		stream << i;
 		s = stream.str();
-		cout << s << " " << st->rank(s) << " " << st->floor(s) << " "<<st->ceiling(s) << endl;
+		cout << s << " " << st->rank(s) << " " << st->floor(s) << " " << st->ceiling(s) << endl;
 	}
 
 
 	// test range search and range count
-	string from[]  = { "A", "Z", "X", "0", "B", "C" };
-	string to[]  = { "Z", "A", "X", "Z", "G", "L" };
+	string from[] = { "A", "Z", "X", "0", "B", "C" };
+	string to[] = { "Z", "A", "X", "Z", "G", "L" };
 	cout << ("range search") << endl;
 	cout << ("-------------------") << endl;
 	for (int i = 0; i < sizeof(from) / sizeof(string); i++) {
@@ -389,7 +389,7 @@ void BST<Key, Value>::main2() {
 			cout << s + " " << endl;
 	}
 
-// 	 delete the smallest keys
+	// 	 delete the smallest keys
 	for (int i = 0; i < st->size() / 2; i++) {
 		st->deleteMin();
 	}
@@ -397,8 +397,8 @@ void BST<Key, Value>::main2() {
 	cout << "--------------------------------" << endl;
 	for (string s : *st->keys())
 		cout << s + " " << st->get(s) << endl;
- 
- 	// delete all the remaining keys
+
+	// delete all the remaining keys
 	while (!st->isEmpty()) {
 		st->del(st->select(st->size() / 2));
 	}
@@ -407,10 +407,11 @@ void BST<Key, Value>::main2() {
 	for (string s : *st->keys())
 		cout << s + " " << st->get(s) << endl;
 
-		cout << "After adding back the keys" << endl;
-		cout << "--------------------------------" << endl;
+	cout << "After adding back the keys" << endl;
+	cout << "--------------------------------" << endl;
 	for (int i = 0; i < sizeof(keys) / sizeof(string); i++)
 		st->put(keys[i], i);
 	for (string s : *st->keys())
 		cout << s + " " << st->get(s) << endl;
 }
+template class BST<string, int>;
