@@ -67,16 +67,7 @@ int BST<Key, Value>::size(TreeNode* proot) {
 		return 0;
 	return proot->N;
 }
-template<class Key, class Value>
-int BST<Key, Value>::size(Key lo, Key hi) {
-	return size(proot);
-}
-template<class Key, class Value>
-int BST<Key, Value>::size(TreeNode* proot, Key lo, Key hi) {
-	if (proot == NULL)
-		return 0;
-	return proot->N;
-}
+
 template<class Key, class Value>
 Key BST<Key, Value>::min() {
 	if (isEmpty()) throw new exception("calls min() with empty symbol table");
@@ -98,26 +89,6 @@ Key BST<Key, Value>::max(TreeNode* pNode) {
 	else              return pNode->key;
 }
 template<class Key, class Value>
-typename BST<Key, Value>::TreeNode* BST<Key, Value>::nodemin() {
-	if (isEmpty()) throw new exception("calls min() with empty symbol table");
-	return nodemin(proot);
-}
-template<class Key, class Value>
-typename BST<Key, Value>::TreeNode* BST<Key, Value>::nodemin(TreeNode* pNode) {
-	if (pNode->left) return nodemin(pNode->left);
-	else             return pNode;
-}
-template<class Key, class Value>
-typename BST<Key, Value>::TreeNode* BST<Key, Value>::nodemax() {
-	if (isEmpty()) throw new exception("calls min() with empty symbol table");
-	return nodemax(proot);
-}
-template<class Key, class Value>
-typename BST<Key, Value>::TreeNode* BST<Key, Value>::nodemax(TreeNode* pNode) {
-	if (pNode->right) return nodemax(pNode->right);
-	else              return pNode;
-}
-template<class Key, class Value>
 bool BST<Key, Value>::isEmpty() {
 	return size() == 0;
 }
@@ -135,20 +106,7 @@ void BST<Key, Value>::keys(TreeNode* proot, vector<Key>* pkeyarr) {
 	keys(proot->left, pkeyarr);
 	keys(proot->right, pkeyarr);
 }
-template<class Key, class Value>
-vector<Key>* BST<Key, Value>::keys(Key lo, Key hi) {
-	vector<Key>* pkeyarr = new vector<Key>();
-	keys(proot, pkeyarr, lo, hi);
-	return pkeyarr;
-}
-template<class Key, class Value>
-void BST<Key, Value>::keys(TreeNode* proot, vector<Key>* pkeyarr, Key lo, Key hi) {
-	if (proot == NULL)
-		return;
-	pkeyarr->push_back(proot->key);
-	keys(proot->left, pkeyarr);
-	keys(proot->right, pkeyarr);
-}
+
 template<class Key, class Value>
 int BST<Key, Value>::rank(Key key) {
 	//if (key) throw new exception("argument to rank() is null");
@@ -164,25 +122,6 @@ int BST<Key, Value>::rank(TreeNode* proot, Key key) {
 		return 1 + size(proot->left) + rank(proot->right, key);
 	else if (key == proot->key)
 		return size(proot->left);
-}
-template<class Key, class Value>
-Key BST<Key, Value>::select(int k) {
-	if (k < 0 || k >= size()) {
-		throw new exception("argument to select() is invalid: " + k);
-	}
-	return select(proot, k);
-}
-template<class Key, class Value>
-Key BST<Key, Value>::select(TreeNode* proot, int k) {
-	if (proot == NULL)
-		return "NULL";
-	int lk = size(proot->left);
-	if (k < lk)
-		return select(proot->left, k);
-	else if (k > lk)
-		return select(proot->right, k - lk - 1);
-	else if (k == lk)
-		return proot->key;
 }
 
 template<class Key, class Value>
@@ -252,7 +191,7 @@ typename BST<Key, Value>::TreeNode* BST<Key, Value>::deleteMin(TreeNode* proot) 
 template<class Key, class Value>
 void BST<Key, Value>::deleteMax() {
 	if (isEmpty()) throw new exception("Symbol table underflow");
-	proot = deleteMax(proot);//必须返回给proot
+	proot = deleteMax(proot);
 	//assert check();
 }
 template<class Key, class Value>
@@ -277,35 +216,12 @@ void BST<Key, Value>::del(Key key) {
 }
 template<class Key, class Value>
 typename BST<Key, Value>::TreeNode* BST<Key, Value>::del(TreeNode* proot, Key key) {
-	if (proot == NULL)//未命中key结束递归
-		return NULL;
-	if (proot->key == key){//命中key
-		if (proot->left == NULL){
-			TreeNode* pret = proot->right;
-			delete proot;
-			return pret;
-		}
-		if (proot->right == NULL){
-			TreeNode* pret = proot->left;
-			delete proot;
-			return pret;
-		}
-		else{//两边都有节点
-			TreeNode* pret = new TreeNode(nodemin(proot->right));
-			pret->left = proot->left;
-			pret->right = deleteMin(proot->right);
-			return pret;
-		}
-	}
-	else if (proot->key < key)
-		proot->right = del(proot->right, key);
-	else if (proot->key > key)
-		proot->left = del(proot->left, key);
-
-	proot->N = 1 + size(proot->left) + size(proot->right);
-	return proot;
+	return NULL;
 }
 template class BST<string, int>;
+
+
+
 //测试入口函数
 template<class Key, class Value>
 void BST<Key, Value>::main(int minLen) {
@@ -337,7 +253,6 @@ void BST<Key, Value>::main(int minLen) {
 	cout << "highest frequency:" << maxfreqstring << endl;
 	cout << "count:" << st->get(maxfreqstring) << endl;
 }
-
 //测试入口函数2
 template<class Key, class Value>
 void BST<Key, Value>::main2() {
@@ -360,57 +275,65 @@ void BST<Key, Value>::main2() {
 		cout << word <<" "<< st->get(word) << endl;
 
 	// print keys in order using select
-	cout << "Testing select" << endl;
-	cout << "-----------------"<<endl;
-	for (int i = 0; i < st->size(); i++)
-		cout << i << " " << st->select(i) << endl;
+// 	StdOut.println("Testing select");
+// 	StdOut.println("--------------------------------");
+// 	for (int i = 0; i < st.size(); i++)
+// 		StdOut.println(i + " " + st.select(i));
+// 	StdOut.println();
+// 
 
  	// test rank, floor, ceiling
 	cout << "Testing key rank(key) floor(key) ceil(key)" << endl;
-	cout << "--------------------------------" << endl;
+	cout << "-------------------" << endl;
 
 	string s;
 	for (char i = 'A'; i <= 'Z'; i++) {
 		stringstream stream; 
 		stream << i;
 		s = stream.str();
-		cout << s << " " << st->rank(s) << " " << st->floor(s) << " "<<st->ceiling(s) << endl;
+		cout << s << " " << st->floor(s) << " "<<st->ceiling(s) << endl;
 	}
 
 
-	// test range search and range count
-	string from[]  = { "A", "Z", "X", "0", "B", "C" };
-	string to[]  = { "Z", "A", "X", "Z", "G", "L" };
-	cout << ("range search") << endl;
-	cout << ("-------------------") << endl;
-	for (int i = 0; i < sizeof(from) / sizeof(string); i++) {
-		cout << from[i] << "-" << to[i] << st->size(from[i], to[i]) << endl;
-		for (string s : *st->keys(from[i], to[i]))
-			cout << s + " " << endl;
-	}
+// 	// test range search and range count
+// 	String[] from = { "A", "Z", "X", "0", "B", "C" };
+// 	String[] to = { "Z", "A", "X", "Z", "G", "L" };
+// 	StdOut.println("range search");
+// 	StdOut.println("-------------------");
+// 	for (int i = 0; i < from.length; i++) {
+// 		StdOut.printf("%s-%s (%2d) : ", from[i], to[i], st.size(from[i], to[i]));
+// 		for (String s : st.keys(from[i], to[i]))
+// 			StdOut.print(s + " ");
+// 		StdOut.println();
+// 	}
+// 	StdOut.println();
+// 
+// 	// delete the smallest keys
+// 	for (int i = 0; i < st.size() / 2; i++) {
+// 		st.deleteMin();
+// 	}
+// 	StdOut.println("After deleting the smallest " + st.size() / 2 + " keys");
+// 	StdOut.println("--------------------------------");
+// 	for (String s : st.keys())
+// 		StdOut.println(s + " " + st.get(s));
+// 	StdOut.println();
+// 
+// 	// delete all the remaining keys
+// 	while (!st.isEmpty()) {
+// 		st.delete(st.select(st.size() / 2));
+// 	}
+// 	StdOut.println("After deleting the remaining keys");
+// 	StdOut.println("--------------------------------");
+// 	for (String s : st.keys())
+// 		StdOut.println(s + " " + st.get(s));
+// 	StdOut.println();
+// 
+// 	StdOut.println("After adding back the keys");
+// 	StdOut.println("--------------------------------");
+// 	for (int i = 0; i < n; i++)
+// 		st.put(keys[i], i);
+// 	for (String s : st.keys())
+// 		StdOut.println(s + " " + st.get(s));
+// 	StdOut.println();
 
-// 	 delete the smallest keys
-	for (int i = 0; i < st->size() / 2; i++) {
-		st->deleteMin();
-	}
-	cout << "After deleting the smallest " << st->size() / 2 << "keys" << endl;
-	cout << "--------------------------------" << endl;
-	for (string s : *st->keys())
-		cout << s + " " << st->get(s) << endl;
- 
- 	// delete all the remaining keys
-	while (!st->isEmpty()) {
-		st->del(st->select(st->size() / 2));
-	}
-	cout << "After deleting the remaining keys" << endl;
-	cout << "--------------------------------" << endl;
-	for (string s : *st->keys())
-		cout << s + " " << st->get(s) << endl;
-
-		cout << "After adding back the keys" << endl;
-		cout << "--------------------------------" << endl;
-	for (int i = 0; i < sizeof(keys) / sizeof(string); i++)
-		st->put(keys[i], i);
-	for (string s : *st->keys())
-		cout << s + " " << st->get(s) << endl;
 }
