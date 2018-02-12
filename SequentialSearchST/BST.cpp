@@ -35,23 +35,24 @@ Value BST<Key, Value>::get(TreeNode* root, Key key)
 template<class Key, class Value>
 void BST<Key, Value>::put(Key key, Value val)
 {
-	put(proot, key, val);
+	proot = put(proot, key, val);
 }
 
 template<class Key, class Value>
-typename BST<Key, Value>::TreeNode*& BST<Key, Value>::put(TreeNode* &pnode, Key key, Value val)
+typename BST<Key, Value>::TreeNode* BST<Key, Value>::put(TreeNode* pnode, Key key, Value val)
 {
 	if (pnode == NULL)
-		return (pnode = new TreeNode(key, val, 1));
+		return  new TreeNode(key, val, 1);//the thrid param indicates the N in the new node
 
 	else if (pnode->key < key)
-		put(pnode->right, key, val);
+		pnode->right = put(pnode->right, key, val);
 	else if (pnode->key > key)
-		put(pnode->left, key, val);
+		pnode->left = put(pnode->left, key, val);
 	else if (pnode->key == key)
 		pnode->val = val;
 
 	pnode->N = 1 + size(pnode->left) + size(pnode->right);
+	return  pnode;//the same important point with 45 line
 }
 template<class Key, class Value>
 bool BST<Key, Value>::contains(Key key) {

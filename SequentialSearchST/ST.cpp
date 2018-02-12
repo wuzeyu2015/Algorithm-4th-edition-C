@@ -9,9 +9,15 @@
 
 int main()
 {
+	//无序链表的顺序查找
 	//SequentialSearchST<string, int>::main(1);
+
+	//有序数组的二分查找
 	//BinarySearchST<string, int>::main(1);
+
+	//二叉查找树
 	BST<string, int>::main(1);
+	//BST接口测试
 	BST<string, int>::main2();
 	system("pause");
     return 0;

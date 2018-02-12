@@ -77,6 +77,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="001_Two_Sum.h" />
     <ClInclude Include="100_Same_Tree.h" />
     <ClInclude Include="101_Symmetric_Tree.h" />
     <ClInclude Include="102_Binary_Tree_Level_Order_Traversal.h" />
@@ -96,6 +97,7 @@
     <ClInclude Include="20_Valid_Parentheses.h" />
     <ClInclude Include="222_Count_Complete_Tree_Nodes.h" />
     <ClInclude Include="226_Invert_Binary_Tree.h" />
+    <ClInclude Include="232_Implement_Queue_using_Stacks.h" />
     <ClInclude Include="23_Merge_k_Sorted_Lists.h" />
     <ClInclude Include="279_Perfect_Squares.h" />
     <ClInclude Include="347_Top_K_Frequent_Elements.h" />

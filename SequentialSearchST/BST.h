@@ -67,7 +67,7 @@ private:
 	TreeNode* nodemax(TreeNode* proot);
 	int size(TreeNode* proot);
 	Value get(TreeNode* proot, Key key);
-	TreeNode*& put(TreeNode*& pnode, Key key, Value val);
+	TreeNode* put(TreeNode* pnode, Key key, Value val);
 	void keys(TreeNode* proot, vector<Key>* pkeyarr);
 	void keys(TreeNode* proot, vector<Key>* pkeyarr, Key lo, Key hi); //keys in[lo..hi], in sorted order
 	TreeNode* floor(TreeNode* pNode, Key key);
